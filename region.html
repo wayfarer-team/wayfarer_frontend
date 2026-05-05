@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="page-regions" class="page">
+  <header class="site-header">
+    <div class="site-logo">🏔️ Кыргызстан</div>
+    <nav class="nav-links">
+      <a onclick="navigateTo('regions')">Регионы</a>
+      <a onclick="navigateTo('planner')">Спланировать поездку</a>
+    </nav>
+    <div class="user-info">
+      <div class="user-avatar" id="userAvatar">T</div>
+      <span id="userName">Путешественник</span>
+    </div>
+  </header>
+  
+  <div class="regions-hero">
+    <h2>Исследуйте регионы</h2>
+    <h1>Семь областей,<br>Бесконечные Истории</h1>
+    <p>Щелкните по любому региону на карте, чтобы узнать его историю, скрытые сокровища и воспоминания тех, кто побывал там до вас.</p>
+  </div>
+
+  <div class="map-container">
+    <!-- Kyrgyzstan SVG Map -->
+    <div class="kyrgyzstan-map-wrap">
+      <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Talas region -->
+        <path class="region-path" id="map-talas" fill="#2D9CDB" opacity="0.75"
+          d="M 80,120 L 140,90 L 200,100 L 230,130 L 210,160 L 160,170 L 110,155 Z"
+          onclick="openRegion('talas')"
+          onmousemove="showTooltip(event,'talas')"
+          onmouseleave="hideTooltip()"
+        />
+        <!-- Bishkek / Chuy region -->
+        <path class="region-path" id="map-chuy" fill="#5BA85C" opacity="0.75"
+          d="M 200,100 L 310,80 L 340,100 L 350,130 L 310,150 L 260,160 L 230,130 Z"
+          onclick="openRegion('chuy')"
+          onmousemove="showTooltip(event,'chuy')"
+          onmouseleave="hideTooltip()"
+        />
+        <!-- Issyk-Kul region -->
+        <path class="region-path" id="map-issyk-kul" fill="#3AAFA9" opacity="0.75"
+          d="M 340,100 L 500,80 L 540,110 L 530,160 L 480,180 L 410,175 L 360,165 L 350,130 Z"
+          onclick="openRegion('issyk-kul')"
+          onmousemove="showTooltip(event,'issyk-kul')"
+          onmouseleave="hideTooltip()"
+        />
+        <!-- Naryn region -->
+        <path class="region-path" id="map-naryn" fill="#C47B2B" opacity="0.75"
+          d="M 260,160 L 350,130 L 360,165 L 410,175 L 430,220 L 380,260 L 300,265 L 250,240 L 240,200 Z"
+          onclick="openRegion('naryn')"
+          onmousemove="showTooltip(event,'naryn')"
+          onmouseleave="hideTooltip()"
+        />
+        <!-- Jalal-Abad region -->
+        <path class="region-path" id="map-jalal-abad" fill="#8B5CF6" opacity="0.75"
+          d="M 160,170 L 260,160 L 240,200 L 250,240 L 220,280 L 170,290 L 140,260 L 130,220 Z"
+          onclick="openRegion('jalal-abad')"
+          onmousemove="showTooltip(event,'jalal-abad')"
+          onmouseleave="hideTooltip()"
+        />
+        <!-- Osh region -->
+        <path class="region-path" id="map-osh" fill="#E05C3A" opacity="0.75"
+          d="M 170,290 L 220,280 L 250,240 L 300,265 L 310,300 L 270,330 L 210,330 L 170,310 Z"
+          onclick="openRegion('osh')"
+          onmousemove="showTooltip(event,'osh')"
+          onmouseleave="hideTooltip()"
+        />
+        <!-- Batken region -->
+        <path class="region-path" id="map-batken" fill="#D4455B" opacity="0.75"
+          d="M 100,280 L 140,260 L 170,290 L 170,310 L 210,330 L 190,360 L 120,350 L 90,320 Z"
+          onclick="openRegion('batken')"
+          onmousemove="showTooltip(event,'batken')"
+          onmouseleave="hideTooltip()"
+        />
+
+        <!-- Issyk-Kul Lake -->
+        <ellipse cx="430" cy="130" rx="70" ry="22" fill="#1B6B8A" opacity="0.7"/>
+        <text x="430" y="135" text-anchor="middle" fill="rgba(180,220,240,0.7)" font-size="9" font-family="Space Mono">Ысык-Куль</text>
+
+        <!-- Mountain icons / dots -->
+        <text x="390" y="250" font-size="12" opacity="0.5">⛰</text>
+        <text x="320" y="115" font-size="10" opacity="0.4">⛰</text>
+        <text x="460" y="155" font-size="11" opacity="0.4">⛰</text>
+
+        <!-- Country label -->
+        <text x="300" y="380" text-anchor="middle" fill="rgba(200,150,62,0.3)" font-size="11" font-family="Cinzel" letter-spacing="5">КЫРГЫЗСТАН</text>
+      </svg>
+    </div>
+
+    <!-- Legend -->
+    <div class="map-legend">
+      <h3>Regions</h3>
+      <div class="legend-item" onclick="openRegion('bishkek-city')">
+        <div class="legend-dot" style="background: #4A90D9"></div>
+        <div>
+          <span>Бишкек</span>
+          <small>Столица</small>
+        </div>
+      </div>
+      <div class="legend-item" onclick="openRegion('chuy')">
+        <div class="legend-dot" style="background: #5BA85C"></div>
+        <div>
+          <span>Чуйская область</span>
+          <small>Северные равнины и долины</small>
+        </div>
+      </div>
+      <div class="legend-item" onclick="openRegion('issyk-kul')">
+        <div class="legend-dot" style="background: #3AAFA9"></div>
+        <div>
+          <span>Ысык-Кульская область</span>
+          <small>Район жемчужного озера</small>
+        </div>
+      </div>
+      <div class="legend-item" onclick="openRegion('naryn')">
+        <div class="legend-dot" style="background: #C47B2B"></div>
+        <div>
+          <span>Нарынская область</span>
+          <small>Высокогорные степи</small>
+        </div>
+      </div>
+      <div class="legend-item" onclick="openRegion('jalal-abad')">
+        <div class="legend-dot" style="background: #8B5CF6"></div>
+        <div>
+          <span>Джалал-Абадская область</span>
+          <small>Ореховые леса и каньоны</small>
+        </div>
+      </div>
+      <div class="legend-item" onclick="openRegion('osh')">
+        <div class="legend-dot" style="background: #E05C3A"></div>
+        <div>
+          <span>Ошская область</span>
+          <small>Анцентный город Шелкового пути</small>
+        </div>
+      </div>
+      <div class="legend-item" onclick="openRegion('batken')">
+        <div class="legend-dot" style="background: #D4455B"></div>
+        <div>
+          <span>Баткенская область</span>
+          <small>Full of history</small>
+        </div>
+      </div>
+      <div class="legend-item" onclick="openRegion('talas')">
+        <div class="legend-dot" style="background: #2D9CDB"></div>
+        <div>
+          <span>Таласская область</span>
+          <small>Родина эпоса Манаса</small>
+        </div>
+      </div>
+
+      <div class="gold-divider" style="margin: 20px 0 15px;"><span>✦</span></div>
+
+      <button class="btn-secondary" style="width:100%" onclick="navigateTo('planner')">
+        🗺 План полного тура
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Tooltip -->
+<div class="map-tooltip" id="mapTooltip">
+  <h4 id="tooltipTitle"></h4>
+  <p id="tooltipDesc"></p>
+</div>
+<script src="script.js" defer></script>
+</body>
+</html>

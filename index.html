@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wayfarer</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Page transition overlay -->
+<div class="page-transition" id="pageTransition"></div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast">
+  <span class="toast-icon">✨</span>
+  <span class="toast-text" id="toastText">Добро пожаловать в Кыргызстан!</span>
+</div>
+
+<!-- ===================== PAGE: REGISTER ===================== -->
+<div id="page-register" class="page active">
+  <div class="yurt-pattern"></div>
+  <div class="mountain-silhouette"></div>
+
+  <div class="reg-card">
+    <div class="reg-logo">
+      <span class="kyrgyz-emblem">🏔️</span>
+      <h1>Кыргызстан</h1>
+      <p>Страна гор и древних шелковых путей</p>
+    </div>
+
+    <div class="reg-tabs">
+      <div class="reg-tab active" onclick="switchAuthTab('login')">Войти</div>
+      <div class="reg-tab" onclick="switchAuthTab('register')">Создать аккаунт</div>
+    </div>
+
+    <div id="form-login" class="reg-form active">
+      <div class="form-group">
+        <label>Email </label>
+        <input type="email" id="login-email" placeholder="traveler@example.com" />
+      </div>
+      <div class="form-group">
+        <label>Пароль</label>
+        <input type="password" id="login-pass" placeholder="••••••••" />
+      </div>
+      <button class="btn-primary" onclick="doLogin()" href="region.html">Начните путешествие</button>
+    </div>
+    
+    <div id="form-register" class="reg-form">
+      <div class="form-group">
+        <label>ФИО</label>
+        <input type="text" id="reg-name" placeholder="Your name" />
+      </div>
+      <div class="form-group">
+        <label>Email </label>
+        <input type="email" id="reg-email" placeholder="traveler@example.com" />
+      </div>
+      <div class="form-group">
+        <label>Пароль</label>
+        <input type="password" id="reg-pass" placeholder="Create password" />
+      </div>
+      <button class="btn-primary" onclick="doRegister()" href="region.html">Начните свое приключение</button>
+
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>

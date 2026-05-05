@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- ===================== PAGE: REGION DETAIL ===================== -->
+<div id="page-region-detail" class="page">
+  <header class="site-header">
+    <div class="site-logo">🏔️ КЫРГЫЗСТАН</div>
+    <nav class="nav-links">
+      <a onclick="navigateTo('regions')" href="region.html">← Все регионы</a>
+      <a onclick="navigateTo('planner')">Спланировать поездку</a>
+    </nav>
+    <div class="user-info">
+      <div class="user-avatar" id="userAvatar2">T</div>
+    </div>
+  </header>
+
+  <div class="region-hero" id="regionHero">
+    <div class="region-hero-bg" id="regionHeroBg"></div>
+    <div class="region-hero-content">
+      <div class="region-badge" id="regionBadge">Область</div>
+      <h1 id="regionTitle">Название региона</h1>
+      <p id="regionTagline">Красивый слоган</p>
+    </div>
+  </div>
+
+  <nav class="region-nav">
+    <div class="region-tabs">
+      <div class="region-tab active" onclick="switchRegionTab('history')">История</div>
+      <div class="region-tab" onclick="switchRegionTab('places')">Места</div>
+      <div class="region-tab" onclick="switchRegionTab('reviews')">Истории и Отзывы</div>
+    </div>
+    <button class="btn-secondary" onclick="navigateTo('planner')">Добавить в поездку</button>
+  </nav>
+
+  <div class="region-content">
+    <!-- HISTORY TAB -->
+    <div class="region-section active" id="sec-history">
+      <div class="history-layout">
+        <div class="history-text" id="historyText">
+        </div>
+        <div class="history-timeline" id="historyTimeline">
+        </div>
+      </div>
+    </div>
+
+    <!-- PLACES TAB -->
+    <div class="region-section" id="sec-places">
+      <div class="section-heading">
+        <div class="eyebrow">Обязательно посмотрите</div>
+        <h2>Лучшие места для посещения</h2>
+      </div>
+      <div class="places-grid" id="placesGrid"></div>
+    </div>
+
+    <!-- REVIEWS TAB -->
+    <div class="region-section" id="sec-reviews">
+      <div class="reviews-header">
+        <div>
+          <div class="section-heading" style="margin-bottom:0">
+            <div class="eyebrow">Истории путешественников</div>
+            <h2>Отзывы и Впечатления</h2>
+          </div>
+        </div>
+        <button class="btn-secondary" onclick="toggleReviewForm()">+ Поделиться своей историей</button>
+      </div>
+
+      <div class="reviews-list" id="reviewsList"></div>
+
+      <div class="review-form" id="reviewForm">
+        <h3>Поделитесь своим опытом</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ваше имя</label>
+            <input type="text" id="reviewName" placeholder="Traveler's name" />
+          </div>
+          <div class="form-group">
+            <label>Дата поездки</label>
+            <input type="month" id="reviewDate" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Ваш опыт</label>
+          <textarea id="reviewText" placeholder="Tell us about your journey through this region..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Rating</label>
+          <div class="star-rating" id="starRating">
+            <button class="star-btn" data-val="1" onclick="setRating(1)">★</button>
+            <button class="star-btn" data-val="2" onclick="setRating(2)">★</button>
+            <button class="star-btn" data-val="3" onclick="setRating(3)">★</button>
+            <button class="star-btn" data-val="4" onclick="setRating(4)">★</button>
+            <button class="star-btn" data-val="5" onclick="setRating(5)">★</button>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="submitReview()" style="width:auto; padding: 12px 30px;">Submit Story</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PAGE: PLANNER ===================== -->
+<div id="page-planner" class="page">
+  <header class="site-header">
+    <div class="site-logo">🏔️ КЫРГЫЗСТАН</div>
+    <nav class="nav-links">
+      <a onclick="navigateTo('regions')">← Регионы</a>
+    </nav>
+    <div class="user-info">
+      <div class="user-avatar" id="userAvatar3">T</div>
+    </div>
+  </header>
+
+  <div class="planner-layout">
+    <!-- Sidebar -->
+    <div class="planner-sidebar">
+      <div class="planner-header">
+        <h2>Планировщик поездки</h2>
+        <p>Создайте идеальное путешествие по Кыргызстану</p>
+      </div>
+
+      <div class="planner-form">
+        <h3>Детали поездки</h3>
+        <div class="form-group">
+          <label>Название поездки</label>
+          <input type="text" id="tripName" placeholder="Мое путешествие по Кыргызстану" />
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+          <div class="form-group">
+            <label>Дата начала</label>
+            <input type="date" id="tripStart" />
+          </div>
+          <div class="form-group">
+            <label>Дата окончания</label>
+            <input type="date" id="tripEnd" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Путешественники</label>
+          <input type="number" id="tripPeople" placeholder="2" min="1" />
+        </div>
+      </div>
+
+      <div class="planner-form" style="border-bottom: 1px solid rgba(200,150,62,0.1)">
+        <h3>Выберите регионы</h3>
+        <div class="region-checkboxes">
+          <label class="region-check">
+            <input type="checkbox" value="bishkek-city" onchange="updatePlannerMap()">
+            <div class="check-box"></div>
+            <span>Бишкек</span>
+          </label>
+          <label class="region-check">
+            <input type="checkbox" value="chuy" onchange="updatePlannerMap()">
+            <div class="check-box"></div>
+            <span>Чуй</span>
+          </label>
+          <label class="region-check">
+            <input type="checkbox" value="issyk-kul" onchange="updatePlannerMap()">
+            <div class="check-box"></div>
+            <span>Иссык-Куль</span>
+          </label>
+          <label class="region-check">
+            <input type="checkbox" value="naryn" onchange="updatePlannerMap()">
+            <div class="check-box"></div>
+            <span>Нарын</span>
+          </label>
+          <label class="region-check">
+            <input type="checkbox" value="jalal-abad" onchange="updatePlannerMap()">
+            <div class="check-box"></div>
+            <span>Джалал-Абад</span>
+          </label>
+          <label class="region-check">
+            <input type="checkbox" value="osh" onchange="updatePlannerMap()">
+            <div class="check-box"></div>
+            <span>Ош</span>
+          </label>
+          <label class="region-check">
+            <input type="checkbox" value="batken" onchange="updatePlannerMap()">
+            <div class="check-box"></div>
+            <span>Баткен</span>
+          </label>
+          <label class="region-check">
+            <input type="checkbox" value="talas" onchange="updatePlannerMap()">
+            <div class="check-box"></div>
+            <span>Талас</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="nearby-finder">
+        <h3>Find Nearby</h3>
+        <div class="nearby-btns">
+          <button class="btn-nearby" onclick="findNearby('hotel')">🏨 Отели</button>
+          <button class="btn-nearby" onclick="findNearby('cafe')">☕ Кафе</button>
+          <button class="btn-nearby" onclick="findNearby('attraction')">🏛 Достопримечательности</button>
+          <button class="btn-nearby" onclick="findNearby('gas')">⛽АЗС</button>
+        </div>
+      </div>
+
+      <div class="planner-stops">
+        <h3>Ваши остановки <span id="stopCount" style="color:rgba(245,240,232,0.3); font-size:9px">(0)</span></h3>
+        <div id="stopsList">
+          <p style="color:rgba(245,240,232,0.25); font-style:italic; font-size:13px; text-align:center; padding:20px 0">Остановок пока не добавлено.<br>Выберите регионы и нажмите «Построить маршрут»."</p>
+        </div>
+      </div>
+
+      <div class="planner-actions">
+        <button class="btn-plan" onclick="buildRoute()">🗺 Построить маршрут</button>
+        <button class="btn-secondary" style="width:100%" onclick="openAddTripModal()">+ Добавить новую поездку</button>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div class="planner-map">
+      <div id="map-canvas">
+        <div class="map-placeholder" id="mapPlaceholder">
+          <span class="map-placeholder-icon">🗺</span>
+          <h3>Ваша карта маршрута</h3>
+          <p>Выберите регионы и постройте свой маршрут, чтобы увидеть его здесь</p>
+        </div>
+        <!-- SVG for routes -->
+        <svg class="route-svg" id="routeSvg" xmlns="http://www.w3.org/2000/svg"></svg>
+        <!-- Markers will be injected here -->
+      </div>
+
+      <div class="route-info" id="routeInfo">
+        <div class="route-stat">
+          <span class="value" id="routeDistance">—</span>
+          <span class="label">км всего</span>
+        </div>
+        <div style="width:1px; background:rgba(200,150,62,0.3); align-self:stretch"></div>
+        <div class="route-stat">
+          <span class="value" id="routeDays">—</span>
+          <span class="label">дней</span>
+        </div>
+        <div style="width:1px; background:rgba(200,150,62,0.3); align-self:stretch"></div>
+        <div class="route-stat">
+          <span class="value" id="routeStops">—</span>
+          <span class="label">остановок</span>
+        </div>
+        <div style="flex:1"></div>
+        <div style="color:rgba(245,240,232,0.5); font-family:'Space Mono',monospace; font-size:10px">
+          ⬆Маршрут проложен на основе выбранных регионов. Добавьте остановки для более точного маршрута.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ADD TRIP MODAL ===================== -->
+<div class="modal-overlay" id="addTripModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Планируйте ваше путешествие</h2>
+      <button class="modal-close" onclick="closeAddTripModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <!-- Step indicators -->
+      <div class="trip-steps">
+        <div class="step-indicator active" id="stepInd1">
+          <div class="step-circle">1</div>
+          <div class="step-label">Основы</div>
+        </div>
+        <div class="step-indicator" id="stepInd2">
+          <div class="step-circle">2</div>
+          <div class="step-label">Регионы</div>
+        </div>
+        <div class="step-indicator" id="stepInd3">
+          <div class="step-circle">3</div>
+          <div class="step-label">Остановки</div>
+        </div>
+        <div class="step-indicator" id="stepInd4">
+          <div class="step-circle">4</div>
+          <div class="step-label">Обзор</div>
+        </div>
+      </div>
+
+      <!-- Step 1: Basics -->
+      <div class="trip-step-content active" id="tripStep1">
+        <div class="step-title">Основы поездки</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Название поездки</label>
+            <input type="text" id="modalTripName" placeholder="e.g. Summer in the Mountains" />
+          </div>
+          <div class="form-group">
+            <label>Количество путешественников</label>
+            <input type="number" id="modalTravelers" placeholder="2" min="1" max="50" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Дата отправления</label>
+            <input type="date" id="modalStartDate" />
+          </div>
+          <div class="form-group">
+            <label>Дата возвращения</label>
+            <input type="date" id="modalEndDate" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Стиль путешествия</label>
+          <div class="trip-detail-grid" style="margin-top:8px">
+            <div class="detail-box" onclick="selectStyle(this,'Adventure')">
+              <div class="icon">🏕</div>
+              <h4>Приключения</h4>
+              <p>Экспедиции, кемпинг, верховая езда</p>
+            </div>
+            <div class="detail-box" onclick="selectStyle(this,'Cultural')">
+              <div class="icon">🏛</div>
+              <h4>Культура</h4>
+              <p>История, традиции, местная жизнь</p>
+            </div>
+            <div class="detail-box" onclick="selectStyle(this,'Relaxation')">
+              <div class="icon">🌊</div>
+              <h4>Отдых</h4>
+              <p>Пребывание на озере, спа, живописные пейзажи</p>
+            </div>
+            <div class="detail-box" onclick="selectStyle(this,'Photography')">
+              <div class="icon">📸</div>
+              <h4>Фотография</h4>
+              <p>Эпичные пейзажи, золотые часы</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Regions -->
+      <div class="trip-step-content" id="tripStep2">
+        <div class="step-title">Выберите регионы</div>
+        <p style="color:rgba(245,240,232,0.5); font-style:italic; margin-bottom:20px; font-size:15px">Select all regions you want to visit on this trip.</p>
+        <div class="trip-detail-grid">
+          <div class="detail-box" onclick="toggleModalRegion(this,'Bishkek')">
+            <div class="icon">🏙</div>
+            <h4>Бишкек</h4>
+            <p>Современная столица, оживленные базары</p>
+          </div>
+          <div class="detail-box" onclick="toggleModalRegion(this,'Issyk-Kul')">
+            <div class="icon">🏖</div>
+            <h4>Ыссык-Куль</h4>
+            <p>Перл озера, альпийские пляжи</p>
+          </div>
+          <div class="detail-box" onclick="toggleModalRegion(this,'Naryn')">
+            <div class="icon">⛰</div>
+            <h4>Нарын</h4>
+            <p>Глубокие каньоны, культура кочевников</p>
+          </div>
+          <div class="detail-box" onclick="toggleModalRegion(this,'Osh')">
+            <div class="icon">🕌</div>
+            <h4>Ош</h4>
+            <p>Древний город Шелкового пути</p>
+          </div>
+          <div class="detail-box" onclick="toggleModalRegion(this,'Jalal-Abad')">
+            <div class="icon">🌲</div>
+            <h4>Джалал-Абад</h4>
+            <p>Горные леса и горячие источники</p>
+          </div>
+          <div class="detail-box" onclick="toggleModalRegion(this,'Talas')">
+            <div class="icon">🏹</div>
+            <h4>Талас</h4>
+            <p>Родина эпоса Манаса</p>
+          </div>
+          <div class="detail-box" onclick="toggleModalRegion(this,'Batken')">
+            <div class="icon">🦅</div>
+            <h4>Баткен</h4>
+            <p>Отдалённый рубеж, Ферганская долина</p>
+          </div>
+          <div class="detail-box" onclick="toggleModalRegion(this,'Chuy')">
+            <div class="icon">🌾</div>
+            <h4>Чуй</h4>
+            <p>Плодородные равнины, первый пункт назначения</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Stops -->
+      <div class="trip-step-content" id="tripStep3">
+        <div class="step-title">Планируйте свои остановки</div>
+        <p style="color:rgba(245,240,232,0.5); font-style:italic; margin-bottom:20px; font-size:15px">Рекомендуемые остановки в зависимости от выбранных регионов:</p>
+        <div class="stops-list" id="modalStopsList"></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:15px">
+          <button class="btn-nearby" onclick="addQuickStop('hotel')" style="padding:12px">🏨 Добавить отель</button>
+          <button class="btn-nearby" onclick="addQuickStop('cafe')" style="padding:12px">☕ Добавить кафе</button>
+          <button class="btn-nearby" onclick="addQuickStop('sight')" style="padding:12px">🏛 Добавить достопримечательность</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Review -->
+      <div class="trip-step-content" id="tripStep4">
+        <div class="step-title">Проверьте свой маршрут</div>
+        <div id="tripSummary"></div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-prev" id="modalPrevBtn" onclick="modalPrev()" style="visibility:hidden">← Предыдущий</button>
+      <button class="btn-next" id="modalNextBtn" onclick="modalNext()">Следующий шаг→</button>
+    </div>
+  </div>
+</div>
+
+<!-- Mascot -->
+<div class="mascot-float" id="mascot" onclick="mascotSpeak()" style="display:none">
+  <div class="mascot-bubble" id="mascotBubble"></div>
+  <span class="mascot-figure">👵</span>
+</div>
+<script src="script.js" defer></script>
+</body>
+</html>
