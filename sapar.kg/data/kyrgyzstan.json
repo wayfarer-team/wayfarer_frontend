@@ -1,0 +1,927 @@
+{
+  "site": {
+    "name": "Планировщик путешествий по Кыргызстану",
+    "brand": "Сапар KG",
+    "tagline": "Горы, озера, города и гостеприимство Кыргызстана в одном маршруте",
+    "heroImage": "/assets/images/regions/hero-kyrgyzstan.jpg",
+    "supportPhone": "+996 555 000 777",
+    "supportEmail": "sapar@travel.kg"
+  },
+  "regions": [
+    {
+      "id": "bishkek",
+      "name": "Бишкек",
+      "type": "Город республиканского значения",
+      "image": "/assets/images/regions/bishkek.jpg",
+      "center": [42.8746, 74.5698],
+      "accent": "#b91c1c",
+      "rating": 4.8,
+      "shortDescription": "Столица Кыргызстана с широкими проспектами, музеями, базарами и быстрым выездом к горам.",
+      "description": "Бишкек соединяет городской комфорт и горные впечатления. Утром можно пить кофе у площади Ала-Тоо, днем гулять по базарам и музеям, а вечером уехать в ущелье Ала-Арча или на панораму Чуйской долины.",
+      "bestFor": ["городские прогулки", "музеи", "гастрономия", "старт маршрутов"],
+      "season": "Круглый год, особенно апрель-июнь и сентябрь-октябрь",
+      "gallery": [
+        "/assets/images/regions/bishkek.jpg",
+        "/assets/images/regions/chuy.jpg",
+        "/assets/images/cafes/kyrgyz-cafe.jpg"
+      ],
+      "places": [
+        {
+          "id": "ala-too-square",
+          "name": "Площадь Ала-Тоо",
+          "category": "Городская достопримечательность",
+          "image": "/assets/images/regions/bishkek.jpg",
+          "rating": 4.7,
+          "reviews": 1240,
+          "openingHours": "Круглосуточно",
+          "coordinates": [42.8763, 74.6035],
+          "description": "Главная площадь столицы с видом на здание исторического музея, флагшток и городскую жизнь. Отличное место для первой прогулки, вечерних фотографий и знакомства с ритмом Бишкека.",
+          "howToGet": "От центра города удобно дойти пешком. От аэропорта Манас дорога на автомобиле занимает около 35-45 минут."
+        },
+        {
+          "id": "osh-bazaar-bishkek",
+          "name": "Ошский базар",
+          "category": "Базар и кухня",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.6,
+          "reviews": 980,
+          "openingHours": "Ежедневно 08:00-19:00",
+          "coordinates": [42.8866, 74.5752],
+          "description": "Колоритный рынок, где покупают сухофрукты, специи, лепешки, курут и сувениры. Здесь удобно собрать пикник для поездки в горы и почувствовать живой городской характер.",
+          "howToGet": "На такси из центра 10-15 минут. Лучше приезжать утром, когда выбор самый большой."
+        },
+        {
+          "id": "national-museum-bishkek",
+          "name": "Национальный исторический музей",
+          "category": "Музей",
+          "image": "/assets/images/regions/bishkek.jpg",
+          "rating": 4.5,
+          "reviews": 640,
+          "openingHours": "Вторник-воскресенье 10:00-18:00",
+          "coordinates": [42.8771, 74.6039],
+          "description": "Музей рассказывает об истории кыргызского народа, Великом шелковом пути, эпосе Манас и современной государственности.",
+          "howToGet": "Находится у площади Ала-Тоо. Удобно совместить с прогулкой по Дубовому парку."
+        }
+      ],
+      "hotels": [
+        {
+          "id": "orion-bishkek",
+          "name": "Orion Hotel Bishkek",
+          "level": "5 звезд",
+          "priceRange": "от 14500 сом",
+          "image": "/assets/images/regions/bishkek.jpg",
+          "rating": 4.8,
+          "coordinates": [42.8678, 74.6063],
+          "amenities": ["спа", "завтраки", "трансфер", "центр"]
+        },
+        {
+          "id": "nomad-inn-bishkek",
+          "name": "Nomad Inn Bishkek",
+          "level": "бутик-отель",
+          "priceRange": "от 5200 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.6,
+          "coordinates": [42.8712, 74.5904],
+          "amenities": ["уютные номера", "рабочая зона", "чайная", "парковка"]
+        }
+      ],
+      "cafes": [
+        {
+          "id": "navat-bishkek",
+          "name": "Navat",
+          "cuisine": "кыргызская и центральноазиатская кухня",
+          "priceRange": "1200-2500 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.7,
+          "coordinates": [42.8749, 74.6105],
+          "signature": "бешбармак, боорсоки, чай с травами"
+        },
+        {
+          "id": "frunze-bishkek",
+          "name": "Frunze Restaurant",
+          "cuisine": "современная кухня Кыргызстана",
+          "priceRange": "1800-3200 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.6,
+          "coordinates": [42.8707, 74.6001],
+          "signature": "стейки, кымызный десерт, локальные травы"
+        }
+      ],
+      "routes": [
+        {
+          "id": "bishkek-city-mountains",
+          "name": "Бишкек: город и горы за один день",
+          "duration": "1 день",
+          "transport": "авто",
+          "description": "Площадь Ала-Тоо, Ошский базар, обед с национальной кухней и вечерняя поездка к предгорьям Ала-Арчи.",
+          "stops": [
+            { "name": "Площадь Ала-Тоо", "coordinates": [42.8763, 74.6035] },
+            { "name": "Ошский базар", "coordinates": [42.8866, 74.5752] },
+            { "name": "Ала-Арча", "coordinates": [42.6422, 74.4828] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osh",
+      "name": "Ош",
+      "type": "Город республиканского значения",
+      "image": "/assets/images/regions/osh.jpg",
+      "center": [40.5139, 72.8161],
+      "accent": "#c2410c",
+      "rating": 4.9,
+      "shortDescription": "Древний южный город у подножия Сулейман-Тоо, полный базарных ароматов и шелкового наследия.",
+      "description": "Ош считается одним из древнейших городов Центральной Азии. Здесь легко соединить паломнические места, шумные рынки, плов, ремесленные ряды и южный ритм жизни.",
+      "bestFor": ["история", "базары", "южная кухня", "паломнические маршруты"],
+      "season": "Март-май и сентябрь-ноябрь",
+      "gallery": [
+        "/assets/images/regions/osh.jpg",
+        "/assets/images/regions/batken.jpg",
+        "/assets/images/cafes/kyrgyz-cafe.jpg"
+      ],
+      "places": [
+        {
+          "id": "sulaiman-too",
+          "name": "Сулейман-Тоо",
+          "category": "Священная гора",
+          "image": "/assets/images/regions/osh.jpg",
+          "rating": 4.9,
+          "reviews": 2100,
+          "openingHours": "Ежедневно 08:00-20:00",
+          "coordinates": [40.5284, 72.7822],
+          "description": "Объект ЮНЕСКО и главный символ Оша. На склонах расположены смотровые площадки, музей-пещера и места, связанные с легендами Великого шелкового пути.",
+          "howToGet": "Из центра Оша до подножия 10 минут на такси. Подъем лучше планировать утром или ближе к закату."
+        },
+        {
+          "id": "osh-bazaar",
+          "name": "Ошский базар",
+          "category": "Исторический рынок",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.8,
+          "reviews": 1550,
+          "openingHours": "Ежедневно 07:00-19:00",
+          "coordinates": [40.5342, 72.7983],
+          "description": "Один из самых ярких рынков региона. Здесь продают специи, лепешки, ножи, ткани, сухофрукты и готовят настоящий южный плов.",
+          "howToGet": "Удобно идти от центра пешком или на коротком такси. Берите наличные и торгуйтесь вежливо."
+        },
+        {
+          "id": "rabata-abdullakhan",
+          "name": "Рабат Абдуллахана",
+          "category": "Архитектура",
+          "image": "/assets/images/regions/osh.jpg",
+          "rating": 4.4,
+          "reviews": 310,
+          "openingHours": "Ежедневно 09:00-18:00",
+          "coordinates": [40.5294, 72.7977],
+          "description": "Исторический караванный двор, напоминающий о торговых путях и купеческой культуре юга Кыргызстана.",
+          "howToGet": "Находится рядом с базарной зоной. Можно включить в пеший маршрут по старому Ошу."
+        }
+      ],
+      "hotels": [
+        {
+          "id": "jannat-osh",
+          "name": "Jannat Resort Osh",
+          "level": "4 звезды",
+          "priceRange": "от 7600 сом",
+          "image": "/assets/images/regions/osh.jpg",
+          "rating": 4.6,
+          "coordinates": [40.5192, 72.8031],
+          "amenities": ["бассейн", "завтраки", "трансфер", "вид на город"]
+        },
+        {
+          "id": "silk-road-osh",
+          "name": "Silk Road Guest House",
+          "level": "гостевой дом",
+          "priceRange": "от 3300 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.5,
+          "coordinates": [40.5216, 72.8125],
+          "amenities": ["двор", "домашний завтрак", "экскурсии", "семейные комнаты"]
+        }
+      ],
+      "cafes": [
+        {
+          "id": "brio-osh",
+          "name": "Brio",
+          "cuisine": "кофейня и европейская кухня",
+          "priceRange": "900-1800 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.5,
+          "coordinates": [40.5178, 72.8082],
+          "signature": "кофе, завтраки, чизкейк"
+        },
+        {
+          "id": "southern-plov-osh",
+          "name": "Южный плов",
+          "cuisine": "узгенский плов и самсы",
+          "priceRange": "700-1500 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.8,
+          "coordinates": [40.5321, 72.7995],
+          "signature": "плов с девзирой, салат ачик-чучук"
+        }
+      ],
+      "routes": [
+        {
+          "id": "osh-silk-road",
+          "name": "Ош по следам Шелкового пути",
+          "duration": "1-2 дня",
+          "transport": "пешком и авто",
+          "description": "Сулейман-Тоо, старый базар, ремесленные ряды и ужин с южным пловом.",
+          "stops": [
+            { "name": "Сулейман-Тоо", "coordinates": [40.5284, 72.7822] },
+            { "name": "Рабат Абдуллахана", "coordinates": [40.5294, 72.7977] },
+            { "name": "Ошский базар", "coordinates": [40.5342, 72.7983] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "issyk-kul",
+      "name": "Иссык-Куль",
+      "type": "Область",
+      "image": "/assets/images/regions/issyk-kul.jpg",
+      "center": [42.1856, 77.5619],
+      "accent": "#0369a1",
+      "rating": 4.9,
+      "shortDescription": "Высокогорное озеро, пляжи, горячие источники, каньоны и горнолыжный Каракол.",
+      "description": "Иссык-Куль называют жемчужиной Центральной Азии. Летом сюда едут за пляжами и яхтами, осенью - за спокойными дорогами, зимой - за Караколом, горячими источниками и снежными ущельями.",
+      "bestFor": ["озеро", "каньоны", "горячие источники", "лыжи"],
+      "season": "Июнь-сентябрь для озера, декабрь-март для лыж",
+      "gallery": [
+        "/assets/images/regions/issyk-kul.jpg",
+        "/assets/images/regions/naryn.jpg",
+        "/assets/images/cafes/kyrgyz-cafe.jpg"
+      ],
+      "places": [
+        {
+          "id": "jeti-oguz",
+          "name": "Джеты-Огуз",
+          "category": "Ущелье и скалы",
+          "image": "/assets/images/regions/issyk-kul.jpg",
+          "rating": 4.9,
+          "reviews": 1890,
+          "openingHours": "Круглосуточно",
+          "coordinates": [42.3364, 78.2232],
+          "description": "Красные скалы, известные как Семь быков, стали визитной карточкой южного берега. В ущелье можно гулять, кататься на лошадях и устроить пикник у реки.",
+          "howToGet": "От Каракола примерно 35 км на автомобиле. Дорога подходит для обычного авто в сухую погоду."
+        },
+        {
+          "id": "cholpon-ata-petroglyphs",
+          "name": "Петроглифы Чолпон-Аты",
+          "category": "Археология",
+          "image": "/assets/images/regions/issyk-kul.jpg",
+          "rating": 4.6,
+          "reviews": 730,
+          "openingHours": "Ежедневно 09:00-18:00",
+          "coordinates": [42.6563, 77.0824],
+          "description": "Каменное поле с древними изображениями животных, охоты и сакральных символов. Особенно красиво на рассвете, когда камни подсвечены мягким светом.",
+          "howToGet": "От центра Чолпон-Аты 10 минут на такси. Возьмите воду и удобную обувь."
+        },
+        {
+          "id": "karakol-ski-base",
+          "name": "Горнолыжная база Каракол",
+          "category": "Активный отдых",
+          "image": "/assets/images/regions/naryn.jpg",
+          "rating": 4.8,
+          "reviews": 1120,
+          "openingHours": "Зимой 09:00-16:00, летом по погоде",
+          "coordinates": [42.4076, 78.4692],
+          "description": "Один из лучших горнолыжных курортов региона с панорамой на озеро и хвойные леса. Летом отсюда стартуют треккинги.",
+          "howToGet": "От Каракола около 20 минут на автомобиле. Зимой лучше ехать на внедорожнике или трансфере."
+        }
+      ],
+      "hotels": [
+        {
+          "id": "karven-issyk-kul",
+          "name": "Karven Four Seasons",
+          "level": "курорт",
+          "priceRange": "от 12000 сом",
+          "image": "/assets/images/regions/issyk-kul.jpg",
+          "rating": 4.7,
+          "coordinates": [42.6074, 76.9394],
+          "amenities": ["пляж", "бассейн", "спа", "семейные виллы"]
+        },
+        {
+          "id": "yurt-camp-tamga",
+          "name": "Tamga Yurt Camp",
+          "level": "юрточный лагерь",
+          "priceRange": "от 2800 сом",
+          "image": "/assets/images/regions/issyk-kul.jpg",
+          "rating": 4.8,
+          "coordinates": [42.1472, 77.5439],
+          "amenities": ["юрты", "ужины", "костер", "пляж рядом"]
+        }
+      ],
+      "cafes": [
+        {
+          "id": "karakol-ashlyanfu",
+          "name": "Ашлян-фу Каракол",
+          "cuisine": "дунганская кухня",
+          "priceRange": "400-900 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.8,
+          "coordinates": [42.4907, 78.3947],
+          "signature": "ашлян-фу, жареные пирожки"
+        },
+        {
+          "id": "rukh-ordo-cafe",
+          "name": "Кафе у Рух Ордо",
+          "cuisine": "озерная кухня и рыба",
+          "priceRange": "1200-2400 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.5,
+          "coordinates": [42.6475, 77.0908],
+          "signature": "форель, чай с облепихой"
+        }
+      ],
+      "routes": [
+        {
+          "id": "issyk-kul-south-shore",
+          "name": "Южный берег Иссык-Куля",
+          "duration": "3 дня",
+          "transport": "авто",
+          "description": "Пляж Тамги, каньоны, Джеты-Огуз, Каракол и горячие источники Ак-Суу.",
+          "stops": [
+            { "name": "Тамга", "coordinates": [42.1472, 77.5439] },
+            { "name": "Джеты-Огуз", "coordinates": [42.3364, 78.2232] },
+            { "name": "Каракол", "coordinates": [42.4907, 78.3947] },
+            { "name": "Ак-Суу", "coordinates": [42.5077, 78.5275] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "naryn",
+      "name": "Нарын",
+      "type": "Область",
+      "image": "/assets/images/regions/naryn.jpg",
+      "center": [41.4287, 75.9911],
+      "accent": "#166534",
+      "rating": 4.9,
+      "shortDescription": "Высокогорные пастбища, озера Сон-Куль и Кель-Суу, караван-сарай Таш-Рабат.",
+      "description": "Нарын - территория настоящего высокогорья. Здесь просторы, юрты, лошади, звездное небо и дороги, которые требуют уважения к погоде и расстояниям.",
+      "bestFor": ["джайлоо", "конные туры", "звезды", "приключения"],
+      "season": "Июнь-сентябрь, часть дорог открыта только летом",
+      "gallery": [
+        "/assets/images/regions/naryn.jpg",
+        "/assets/images/regions/hero-kyrgyzstan.jpg",
+        "/assets/images/cafes/kyrgyz-cafe.jpg"
+      ],
+      "places": [
+        {
+          "id": "son-kul",
+          "name": "Сон-Куль",
+          "category": "Высокогорное озеро",
+          "image": "/assets/images/regions/naryn.jpg",
+          "rating": 4.9,
+          "reviews": 1750,
+          "openingHours": "Сезонно, обычно июнь-сентябрь",
+          "coordinates": [41.8596, 75.1568],
+          "description": "Озеро на высоте более 3000 метров, окруженное пастбищами. Здесь живут в юртах, пробуют кымыз, ездят верхом и встречают невероятные рассветы.",
+          "howToGet": "Из Нарына или Кочкора на внедорожнике. Перевалы могут закрываться из-за снега даже летом."
+        },
+        {
+          "id": "tash-rabat",
+          "name": "Таш-Рабат",
+          "category": "Караван-сарай",
+          "image": "/assets/images/regions/naryn.jpg",
+          "rating": 4.8,
+          "reviews": 890,
+          "openingHours": "Ежедневно 09:00-18:00, сезон зависит от дороги",
+          "coordinates": [40.8246, 75.2882],
+          "description": "Каменный караван-сарай XV века, спрятанный в горной долине. Место дает сильное ощущение древних торговых путей.",
+          "howToGet": "От Нарына около 120 км. Лучше ехать с местным водителем и теплой одеждой."
+        },
+        {
+          "id": "kel-suu",
+          "name": "Кель-Суу",
+          "category": "Озеро и каньон",
+          "image": "/assets/images/regions/naryn.jpg",
+          "rating": 4.9,
+          "reviews": 620,
+          "openingHours": "Сезонно июль-сентябрь",
+          "coordinates": [40.6396, 76.3828],
+          "description": "Бирюзовое озеро среди высоких скал у китайской границы. Пейзаж выглядит почти нереально, но требует пропусков и подготовки.",
+          "howToGet": "Нужен пограничный пропуск, внедорожник и минимум два дня. Проверяйте погоду заранее."
+        }
+      ],
+      "hotels": [
+        {
+          "id": "khan-tengri-naryn",
+          "name": "Khan Tengri Hotel",
+          "level": "городской отель",
+          "priceRange": "от 4800 сом",
+          "image": "/assets/images/regions/naryn.jpg",
+          "rating": 4.4,
+          "coordinates": [41.4281, 75.9962],
+          "amenities": ["теплые номера", "завтрак", "парковка", "экскурсии"]
+        },
+        {
+          "id": "son-kul-yurt-camp",
+          "name": "Son-Kul Yurt Camp",
+          "level": "юрточный лагерь",
+          "priceRange": "от 3000 сом",
+          "image": "/assets/images/regions/naryn.jpg",
+          "rating": 4.9,
+          "coordinates": [41.8581, 75.1544],
+          "amenities": ["юрты", "печи", "домашние ужины", "конные прогулки"]
+        }
+      ],
+      "cafes": [
+        {
+          "id": "naryn-kulchatay",
+          "name": "Кулчатай Нарын",
+          "cuisine": "домашняя кыргызская кухня",
+          "priceRange": "700-1500 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.6,
+          "coordinates": [41.4257, 75.9959],
+          "signature": "кулчатай, шорпо, чай"
+        },
+        {
+          "id": "nomad-tea-naryn",
+          "name": "Nomad Tea House",
+          "cuisine": "чайная и выпечка",
+          "priceRange": "500-1100 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.5,
+          "coordinates": [41.4304, 75.9908],
+          "signature": "боорсоки, варенье, горный чай"
+        }
+      ],
+      "routes": [
+        {
+          "id": "naryn-highland-expedition",
+          "name": "Высокогорная экспедиция Нарына",
+          "duration": "5 дней",
+          "transport": "внедорожник",
+          "description": "Нарын, Сон-Куль, Таш-Рабат и Кель-Суу с ночевками в юртах.",
+          "stops": [
+            { "name": "Нарын", "coordinates": [41.4287, 75.9911] },
+            { "name": "Сон-Куль", "coordinates": [41.8596, 75.1568] },
+            { "name": "Таш-Рабат", "coordinates": [40.8246, 75.2882] },
+            { "name": "Кель-Суу", "coordinates": [40.6396, 76.3828] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "batken",
+      "name": "Баткен",
+      "type": "Область",
+      "image": "/assets/images/regions/batken.jpg",
+      "center": [40.0626, 70.8194],
+      "accent": "#92400e",
+      "rating": 4.7,
+      "shortDescription": "Абрикосовые сады, красные скалы, редкий цветок айгуль и южные горные дороги.",
+      "description": "Баткен раскрывается медленно: через теплые долины, аромат урюка, легенды о цветке айгуль и каньоны, где красные скалы выглядят особенно ярко на закате.",
+      "bestFor": ["сады", "каньоны", "легенды", "спокойные маршруты"],
+      "season": "Апрель-май для цветения, сентябрь-октябрь для мягкой погоды",
+      "gallery": [
+        "/assets/images/regions/batken.jpg",
+        "/assets/images/regions/osh.jpg",
+        "/assets/images/cafes/kyrgyz-cafe.jpg"
+      ],
+      "places": [
+        {
+          "id": "aigul-tash",
+          "name": "Айгуль-Таш",
+          "category": "Гора и цветок айгуль",
+          "image": "/assets/images/regions/batken.jpg",
+          "rating": 4.8,
+          "reviews": 430,
+          "openingHours": "Круглосуточно, сезон цветения апрель",
+          "coordinates": [40.0575, 70.8256],
+          "description": "Склоны, связанные с легендой о редком цветке айгуль. Весной место становится особенно ценным для фотографов и любителей ботаники.",
+          "howToGet": "От Баткена короткая поездка на авто. В сезон цветения важно не срывать цветы и соблюдать тропы."
+        },
+        {
+          "id": "kan-i-gut",
+          "name": "Кан-и-Гут",
+          "category": "Пещеры и история",
+          "image": "/assets/images/regions/batken.jpg",
+          "rating": 4.5,
+          "reviews": 280,
+          "openingHours": "По договоренности с гидом",
+          "coordinates": [39.9235, 69.6414],
+          "description": "Легендарные пещеры и древние выработки, окутанные историями о сокровищах. Место подходит только для подготовленной поездки с местными проводниками.",
+          "howToGet": "Нужен местный гид и транспорт повышенной проходимости. Не заходите в пещеры без сопровождения."
+        },
+        {
+          "id": "batken-apricot-gardens",
+          "name": "Абрикосовые сады Баткена",
+          "category": "Агротуризм",
+          "image": "/assets/images/regions/batken.jpg",
+          "rating": 4.7,
+          "reviews": 360,
+          "openingHours": "Сезонно, май-сентябрь",
+          "coordinates": [40.0662, 70.8409],
+          "description": "Сады вокруг Баткена известны сладким урюком и домашними заготовками. Здесь можно устроить дегустацию и купить сухофрукты у фермеров.",
+          "howToGet": "Лучше договариваться через гостевой дом или туроператора, чтобы попасть в семейные сады."
+        }
+      ],
+      "hotels": [
+        {
+          "id": "batken-plaza",
+          "name": "Batken Plaza",
+          "level": "городской отель",
+          "priceRange": "от 4200 сом",
+          "image": "/assets/images/regions/batken.jpg",
+          "rating": 4.3,
+          "coordinates": [40.0611, 70.8199],
+          "amenities": ["кондиционер", "завтрак", "трансфер", "семейные номера"]
+        },
+        {
+          "id": "apricot-guesthouse",
+          "name": "Apricot Guesthouse",
+          "level": "гостевой дом",
+          "priceRange": "от 2600 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.7,
+          "coordinates": [40.0701, 70.8482],
+          "amenities": ["сад", "домашняя кухня", "экскурсии", "сухофрукты"]
+        }
+      ],
+      "cafes": [
+        {
+          "id": "batken-teahouse",
+          "name": "Баткенская чайхана",
+          "cuisine": "южная кухня",
+          "priceRange": "600-1300 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.5,
+          "coordinates": [40.0641, 70.8204],
+          "signature": "самсы, лагман, урючный компот"
+        },
+        {
+          "id": "aigul-cafe",
+          "name": "Айгуль кафе",
+          "cuisine": "семейное кафе",
+          "priceRange": "700-1400 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.4,
+          "coordinates": [40.0597, 70.8263],
+          "signature": "куурдак, манты, травяной чай"
+        }
+      ],
+      "routes": [
+        {
+          "id": "batken-apricot-road",
+          "name": "Абрикосовая дорога Баткена",
+          "duration": "2 дня",
+          "transport": "авто",
+          "description": "Баткен, Айгуль-Таш, семейные сады и красные скальные пейзажи.",
+          "stops": [
+            { "name": "Баткен", "coordinates": [40.0626, 70.8194] },
+            { "name": "Айгуль-Таш", "coordinates": [40.0575, 70.8256] },
+            { "name": "Абрикосовые сады", "coordinates": [40.0662, 70.8409] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "talas",
+      "name": "Талас",
+      "type": "Область",
+      "image": "/assets/images/regions/talas.jpg",
+      "center": [42.5228, 72.2427],
+      "accent": "#a16207",
+      "rating": 4.6,
+      "shortDescription": "Долина эпоса Манас, мягкие горы, Беш-Таш и спокойные семейные маршруты.",
+      "description": "Таласская долина бережно хранит наследие Манаса и дает более камерный ритм путешествия: широкие поля, горные ущелья, гостевые дома и исторические комплексы.",
+      "bestFor": ["эпос Манас", "семейные поездки", "ущелья", "история"],
+      "season": "Май-октябрь",
+      "gallery": [
+        "/assets/images/regions/talas.jpg",
+        "/assets/images/regions/chuy.jpg",
+        "/assets/images/cafes/kyrgyz-cafe.jpg"
+      ],
+      "places": [
+        {
+          "id": "manas-ordo",
+          "name": "Манас Ордо",
+          "category": "Культурный комплекс",
+          "image": "/assets/images/regions/talas.jpg",
+          "rating": 4.8,
+          "reviews": 870,
+          "openingHours": "Ежедневно 09:00-18:00",
+          "coordinates": [42.4511, 72.2908],
+          "description": "Мемориальный комплекс, посвященный эпосу Манас. Здесь есть музей, мавзолей, парк и пространство для знакомства с героическим наследием кыргызов.",
+          "howToGet": "От города Талас около 25 минут на автомобиле. Удобно брать экскурсовода на месте."
+        },
+        {
+          "id": "besh-tash",
+          "name": "Беш-Таш",
+          "category": "Национальный парк",
+          "image": "/assets/images/regions/talas.jpg",
+          "rating": 4.7,
+          "reviews": 520,
+          "openingHours": "Круглосуточно, сезон май-октябрь",
+          "coordinates": [42.2878, 72.5135],
+          "description": "Горное ущелье с рекой, лесами и треккинговыми маршрутами. Подходит для однодневной прогулки и пикника.",
+          "howToGet": "Из Таласа лучше ехать на авто с водителем, последние участки могут быть грунтовыми."
+        },
+        {
+          "id": "kirov-reservoir",
+          "name": "Кировское водохранилище",
+          "category": "Вода и отдых",
+          "image": "/assets/images/regions/talas.jpg",
+          "rating": 4.4,
+          "reviews": 260,
+          "openingHours": "Круглосуточно",
+          "coordinates": [42.6247, 71.5947],
+          "description": "Просторная водная гладь для летнего отдыха, рыбалки и спокойных закатов вдали от больших туристических потоков.",
+          "howToGet": "От Таласа около 90 км. Берите еду и воду, инфраструктура ограничена."
+        }
+      ],
+      "hotels": [
+        {
+          "id": "talas-khan",
+          "name": "Talas Khan Hotel",
+          "level": "городской отель",
+          "priceRange": "от 3900 сом",
+          "image": "/assets/images/regions/talas.jpg",
+          "rating": 4.4,
+          "coordinates": [42.5222, 72.2418],
+          "amenities": ["центр", "завтрак", "парковка", "семейные номера"]
+        },
+        {
+          "id": "besh-tash-camp",
+          "name": "Besh-Tash Mountain Camp",
+          "level": "горный лагерь",
+          "priceRange": "от 2700 сом",
+          "image": "/assets/images/regions/talas.jpg",
+          "rating": 4.6,
+          "coordinates": [42.3005, 72.4912],
+          "amenities": ["домики", "питание", "гиды", "костровая зона"]
+        }
+      ],
+      "cafes": [
+        {
+          "id": "manas-tea-talas",
+          "name": "Манас чай",
+          "cuisine": "кыргызская кухня",
+          "priceRange": "700-1600 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.5,
+          "coordinates": [42.5217, 72.2399],
+          "signature": "бешбармак, боорсоки, айран"
+        },
+        {
+          "id": "talas-family-cafe",
+          "name": "Talas Family Cafe",
+          "cuisine": "семейная кухня",
+          "priceRange": "600-1300 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.3,
+          "coordinates": [42.5263, 72.2488],
+          "signature": "лагман, домашние пироги"
+        }
+      ],
+      "routes": [
+        {
+          "id": "talas-manas-valley",
+          "name": "Долина Манаса",
+          "duration": "2 дня",
+          "transport": "авто",
+          "description": "Талас, Манас Ордо, национальный парк Беш-Таш и вечерняя прогулка по долине.",
+          "stops": [
+            { "name": "Талас", "coordinates": [42.5228, 72.2427] },
+            { "name": "Манас Ордо", "coordinates": [42.4511, 72.2908] },
+            { "name": "Беш-Таш", "coordinates": [42.2878, 72.5135] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chuy",
+      "name": "Чуй",
+      "type": "Область",
+      "image": "/assets/images/regions/chuy.jpg",
+      "center": [42.5079, 74.1524],
+      "accent": "#15803d",
+      "rating": 4.8,
+      "shortDescription": "Ущелья Ала-Арчи, башня Бурана, долина вокруг столицы и удобные маршруты выходного дня.",
+      "description": "Чуйская область - самый удобный регион для коротких путешествий из Бишкека. За один день можно увидеть древнюю башню, горную реку, ледники и вернуться в город к ужину.",
+      "bestFor": ["маршруты выходного дня", "горы", "история", "семейный отдых"],
+      "season": "Круглый год, горные ущелья лучше май-октябрь",
+      "gallery": [
+        "/assets/images/regions/chuy.jpg",
+        "/assets/images/regions/bishkek.jpg",
+        "/assets/images/regions/hero-kyrgyzstan.jpg"
+      ],
+      "places": [
+        {
+          "id": "ala-archa",
+          "name": "Ала-Арча",
+          "category": "Национальный парк",
+          "image": "/assets/images/regions/chuy.jpg",
+          "rating": 4.9,
+          "reviews": 2450,
+          "openingHours": "Ежедневно 08:00-18:00",
+          "coordinates": [42.6422, 74.4828],
+          "description": "Горный парк в 40 км от Бишкека с хвойными лесами, ледниковой рекой, тропами к водопаду и видом на пики Кыргызского Ала-Тоо.",
+          "howToGet": "Из Бишкека 45-60 минут на авто. Летом подойдет обычная машина, зимой лучше уточнять состояние дороги."
+        },
+        {
+          "id": "burana-tower",
+          "name": "Башня Бурана",
+          "category": "Исторический комплекс",
+          "image": "/assets/images/regions/chuy.jpg",
+          "rating": 4.7,
+          "reviews": 1360,
+          "openingHours": "Ежедневно 09:00-18:00",
+          "coordinates": [42.7469, 75.2503],
+          "description": "Минaret древнего Баласагуна и музей под открытым небом с балбалами. Отличная остановка на пути к Иссык-Кулю.",
+          "howToGet": "От Бишкека около 80 км по трассе в сторону Токмока. Удобно совмещать с поездкой на озеро."
+        },
+        {
+          "id": "kegety-gorge",
+          "name": "Ущелье Кегеты",
+          "category": "Ущелье и водопад",
+          "image": "/assets/images/regions/chuy.jpg",
+          "rating": 4.6,
+          "reviews": 520,
+          "openingHours": "Круглосуточно, лучше днем",
+          "coordinates": [42.5483, 75.0709],
+          "description": "Зеленое ущелье с водопадом и хвойными участками. Хорошо подходит для пикника и легкого треккинга.",
+          "howToGet": "От Бишкека около 90 км. Последние километры могут быть грунтовыми."
+        }
+      ],
+      "hotels": [
+        {
+          "id": "ala-archa-lodge",
+          "name": "Ala-Archa Lodge",
+          "level": "горный лодж",
+          "priceRange": "от 6500 сом",
+          "image": "/assets/images/regions/chuy.jpg",
+          "rating": 4.7,
+          "coordinates": [42.6362, 74.4851],
+          "amenities": ["камин", "горный вид", "питание", "трансфер"]
+        },
+        {
+          "id": "burana-guesthouse",
+          "name": "Burana Guesthouse",
+          "level": "гостевой дом",
+          "priceRange": "от 2400 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.5,
+          "coordinates": [42.7399, 75.2466],
+          "amenities": ["двор", "домашний ужин", "исторические туры", "парковка"]
+        }
+      ],
+      "cafes": [
+        {
+          "id": "supara-chuy",
+          "name": "Супара",
+          "cuisine": "кыргызская кухня в этностиле",
+          "priceRange": "1500-3200 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.8,
+          "coordinates": [42.8072, 74.6576],
+          "signature": "бешбармак, кымыз, этно-десерты"
+        },
+        {
+          "id": "tokmok-samsa",
+          "name": "Токмокская самса",
+          "cuisine": "дорожная кухня",
+          "priceRange": "300-800 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.6,
+          "coordinates": [42.8414, 75.3017],
+          "signature": "самса, чай, лепешки"
+        }
+      ],
+      "routes": [
+        {
+          "id": "chuy-weekend-classic",
+          "name": "Классика Чуйской долины",
+          "duration": "1 день",
+          "transport": "авто",
+          "description": "Бишкек, Башня Бурана, Токмокская самса и прогулка в ущелье Кегеты.",
+          "stops": [
+            { "name": "Бишкек", "coordinates": [42.8746, 74.5698] },
+            { "name": "Башня Бурана", "coordinates": [42.7469, 75.2503] },
+            { "name": "Кегеты", "coordinates": [42.5483, 75.0709] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jalal-abad",
+      "name": "Джалал-Абад",
+      "type": "Область",
+      "image": "/assets/images/regions/jalal-abad.jpg",
+      "center": [41.0145, 72.7516],
+      "accent": "#365314",
+      "rating": 4.8,
+      "shortDescription": "Ореховые леса Арсланбоба, озеро Сары-Челек, курортные воды и зеленые горные долины.",
+      "description": "Джалал-Абадская область сочетает мягкий юг, лесные тропы, ореховые рощи и биосферные заповедники. Это направление для тех, кто любит природу без спешки.",
+      "bestFor": ["ореховые леса", "озера", "лечебные воды", "экотуризм"],
+      "season": "Май-октябрь, Сары-Челек особенно красив летом и осенью",
+      "gallery": [
+        "/assets/images/regions/jalal-abad.jpg",
+        "/assets/images/regions/osh.jpg",
+        "/assets/images/cafes/kyrgyz-cafe.jpg"
+      ],
+      "places": [
+        {
+          "id": "arslanbob",
+          "name": "Арсланбоб",
+          "category": "Ореховый лес",
+          "image": "/assets/images/regions/jalal-abad.jpg",
+          "rating": 4.9,
+          "reviews": 1320,
+          "openingHours": "Круглосуточно, экскурсии днем",
+          "coordinates": [41.3423, 72.9274],
+          "description": "Крупнейший ореховый лес региона, горные водопады, гостевые дома и пешие маршруты по тенистым тропам.",
+          "howToGet": "От Джалал-Абада около 3 часов на автомобиле. Лучший формат - ночевка в гостевом доме."
+        },
+        {
+          "id": "sary-chelek",
+          "name": "Сары-Челек",
+          "category": "Биосферный заповедник",
+          "image": "/assets/images/regions/jalal-abad.jpg",
+          "rating": 4.9,
+          "reviews": 980,
+          "openingHours": "Сезонно 08:00-18:00",
+          "coordinates": [41.8738, 71.9557],
+          "description": "Глубокое горное озеро среди лесов и скал. Заповедник известен прозрачной водой, тишиной и богатой природой.",
+          "howToGet": "Дорога занимает несколько часов, часть пути горная. Рекомендуется внедорожник и ранний выезд."
+        },
+        {
+          "id": "jalal-abad-resort",
+          "name": "Курорт Джалал-Абад",
+          "category": "Лечебные источники",
+          "image": "/assets/images/regions/jalal-abad.jpg",
+          "rating": 4.5,
+          "reviews": 410,
+          "openingHours": "Ежедневно 09:00-18:00",
+          "coordinates": [40.9408, 73.0021],
+          "description": "Исторический курорт с минеральными водами и спокойной атмосферой. Подходит для восстановительного отдыха после активных маршрутов.",
+          "howToGet": "От центра Джалал-Абада около 20 минут на авто. Лучше уточнять график процедур заранее."
+        }
+      ],
+      "hotels": [
+        {
+          "id": "sary-chelek-lodge",
+          "name": "Sary-Chelek Eco Lodge",
+          "level": "эко-лодж",
+          "priceRange": "от 5200 сом",
+          "image": "/assets/images/regions/jalal-abad.jpg",
+          "rating": 4.7,
+          "coordinates": [41.8657, 71.9622],
+          "amenities": ["эко-номера", "питание", "лодочные прогулки", "гиды"]
+        },
+        {
+          "id": "arslanbob-family-stay",
+          "name": "Arslanbob Family Stay",
+          "level": "семейный гостевой дом",
+          "priceRange": "от 2500 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.8,
+          "coordinates": [41.3429, 72.9281],
+          "amenities": ["домашняя кухня", "сад", "экскурсии", "орехи"]
+        }
+      ],
+      "cafes": [
+        {
+          "id": "arslanbob-teahouse",
+          "name": "Arslanbob Teahouse",
+          "cuisine": "домашняя кухня",
+          "priceRange": "600-1400 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.7,
+          "coordinates": [41.3434, 72.9295],
+          "signature": "ореховое варенье, шорпо, лепешки"
+        },
+        {
+          "id": "jalal-abad-plov",
+          "name": "Джалал-Абад плов",
+          "cuisine": "южная кухня",
+          "priceRange": "700-1600 сом",
+          "image": "/assets/images/cafes/kyrgyz-cafe.jpg",
+          "rating": 4.6,
+          "coordinates": [40.9349, 72.9813],
+          "signature": "плов, самсы, зеленый чай"
+        }
+      ],
+      "routes": [
+        {
+          "id": "jalal-abad-eco-ring",
+          "name": "Эко-кольцо Джалал-Абада",
+          "duration": "4 дня",
+          "transport": "авто и пешком",
+          "description": "Джалал-Абад, Арсланбоб, Сары-Челек и минеральные источники.",
+          "stops": [
+            { "name": "Джалал-Абад", "coordinates": [40.9333, 72.9833] },
+            { "name": "Арсланбоб", "coordinates": [41.3423, 72.9274] },
+            { "name": "Сары-Челек", "coordinates": [41.8738, 71.9557] },
+            { "name": "Курорт Джалал-Абад", "coordinates": [40.9408, 73.0021] }
+          ]
+        }
+      ]
+    }
+  ]
+}

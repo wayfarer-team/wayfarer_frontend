@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+@import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
+@import "../css/style.css";
+@import "../css/auth.css";
+@import "../css/map.css";
+@import "../css/region.css";
+@import "../css/place.css";
+@import "../css/route.css";
