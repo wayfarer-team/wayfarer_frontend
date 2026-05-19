@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ущелье Джеты-Огуз — знаменитые красные скалы «Семь быков» на южном берегу Иссык-Куля.">
+  <meta property="og:title" content="Джеты-Огуз — Сапар KG">
+  <title>Ущелье Джеты-Огуз — Сапар KG</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .place-header {
+      min-height: 45vh;
+      background: linear-gradient(135deg, #9b2c2c, #c53030, #dd6b20);
+      display:flex; align-items:center; justify-content:center;
+      text-align:center; color:#fff; padding:6rem 2rem 2rem;
+    }
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:1rem; }
+    .info-item { background:var(--glass-bg); backdrop-filter:var(--glass-blur); border:1px solid var(--glass-border); border-radius:var(--radius-md); padding:1.25rem; text-align:center; }
+    .info-item .value { font-size:1.4rem; font-weight:700; color:#c53030; }
+  </style>
+</head>
+<body>
+<div class="kyrgyz-pattern"></div>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">🏔️ Сапар KG</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Главная</a></li>
+      <li><a href="../regions.html">Области</a></li>
+      <li><a href="alaarcha.html">Достопримечательности</a></li>
+      <li><a href="../register.html">Войти</a></li>
+      <li><button class="theme-toggle">🌙</button></li>
+    </ul>
+    <button class="mobile-menu-btn"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="place-header">
+  <div>
+    <span style="font-size:3.5rem;">🏔️</span>
+    <h1 style="font-size:clamp(1.8rem,4vw,3.5rem);">Ущелье Джеты-Огуз</h1>
+    <p style="font-size:1.1rem;opacity:0.9;">«Семь быков» — знаменитые красные скалы Иссык-Куля</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="info-grid">
+    <div class="info-item"><span style="font-size:1.5rem;">📍</span><div class="value">Иссык-Куль</div><small>Южный берег</small></div>
+    <div class="info-item"><span style="font-size:1.5rem;">⏱️</span><div class="value">30 мин</div><small>От Каракола</small></div>
+    <div class="info-item"><span style="font-size:1.5rem;">📏</span><div class="value">2 200 м</div><small>Высота</small></div>
+    <div class="info-item"><span style="font-size:1.5rem;">💰</span><div class="value">Бесплатно</div><small>Вход</small></div>
+    <div class="info-item"><span style="font-size:1.5rem;">📅</span><div class="value">Май–Октябрь</div><small>Сезон</small></div>
+    <div class="info-item"><span style="font-size:1.5rem;">⚡</span><div class="value">Лёгкий</div><small>Лучшие маршруты</small></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="glass-card" style="padding:2rem;max-width:900px;margin:0 auto;">
+    <h2 class="gradient-text">О месте</h2>
+    <p>Джеты-Огуз (в переводе «Семь быков») — одно из самых известных ущелий Кыргызстана. Расположено в 28 км от города Каракол на южном берегу Иссык-Куля. Знаменито своими скалами из красного песчаника, которые напоминают семь стоящих быков.</p>
+    <p style="margin-top:1rem;">Рядом находится скала «Разбитое сердце» — по легенде, это сердце девушки, погибшей от несчастной любви. Ущелье покрыто тянь-шаньскими елями, здесь протекает горная река и есть водопад Девичьи косы.</p>
+    <p style="margin-top:1rem;"><strong>Что делать:</strong> пешие прогулки, конные маршруты, фотосъёмка, пикники. В ущелье есть курорт Джеты-Огуз с горячими источниками.</p>
+  </div>
+</section>
+
+<section class="section" style="text-align:center;"><div class="weather-target"></div></section>
+
+<section class="section">
+  <div class="comments-container" data-place="jetioguz" style="max-width:700px;margin:0 auto;">
+    <div class="section-header"><h2 class="gradient-text">Отзывы</h2></div>
+    <div class="comments-list"></div>
+    <form class="comment-form glass-card" style="padding:1.5rem;margin-top:1.5rem;">
+      <h4>Оставить отзыв</h4>
+      <div class="form-group"><input type="text" name="author" class="form-input" placeholder="Ваше имя" required></div>
+      <div class="form-group"><select name="rating" class="form-input" style="width:auto;"><option value="5">⭐⭐⭐⭐⭐</option><option value="4">⭐⭐⭐⭐</option></select></div>
+      <div class="form-group"><textarea name="text" class="form-input" rows="3" placeholder="Впечатления..." required></textarea></div>
+      <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+  </div>
+</section>
+
+<section class="section">
+  <div style="max-width:600px;margin:0 auto;">
+    <div class="planner-items glass-card" style="padding:1.5rem;"></div>
+    <button class="btn btn-gold" style="margin-top:1rem;" onclick="addToPlanner({id:'jetioguz',name:'Ущелье Джеты-Огуз',region:'Иссык-Куль'});renderPlanner('.planner-items');">➕ В маршрут</button>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col"><h4>🏔️ Сапар KG</h4></div>
+    <div class="footer-col"><h4>Места</h4><ul><li><a href="alaarcha.html">Ала-Арча</a></li><li><a href="burana.html">Бурана</a></li><li><a href="skazka.html">Сказка</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Сапар KG.</p></div>
+</footer>
+
+<button class="back-to-top">↑</button>
+<script src="../script.js"></script>
+<script>document.addEventListener('DOMContentLoaded',()=>{initComments('jetioguz');renderPlanner('.planner-items');displayWeather('.weather-target');});</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Все области Кыргызстана — исследуйте каждый регион: Иссык-Куль, Ош, Нарын, Талас, Баткен, Бишкек и другие.">
+  <meta property="og:title" content="Области Кыргызстана — Сапар KG">
+  <meta property="og:description" content="Исследуйте все регионы Кыргызстана с их уникальной историей и культурой.">
+  <title>Области Кыргызстана — Сапар KG</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="kyrgyz-pattern"></div>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">🏔️ Сапар KG</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="regions.html" class="active">Области</a></li>
+      <li><a href="places/alaarcha.html">Достопримечательности</a></li>
+      <li><a href="register.html">Войти</a></li>
+      <li><button class="theme-toggle" aria-label="Переключить тему">🌙</button></li>
+    </ul>
+    <button class="mobile-menu-btn" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header style="padding:8rem 2rem 3rem;text-align:center;background:linear-gradient(135deg,#1a365d,#2b6cb0);color:#fff;">
+  <h1 style="font-size:clamp(2rem,5vw,3.5rem);margin-bottom:0.5rem;">Области Кыргызстана</h1>
+  <p style="font-size:1.1rem;opacity:0.85;">7 областей и 2 города республиканского значения — каждая со своим уникальным характером</p>
+</header>
+
+<section class="section">
+  <div class="search-bar">
+    <input type="text" placeholder="🔍 Поиск области..." aria-label="Поиск области">
+    <button>Найти</button>
+  </div>
+  
+  <div class="cards-grid" data-search-target>
+    <!-- Issyk-Kul -->
+    <article class="card region-card-issykul animate-on-scroll">
+      <img class="card-image" src="https://world-travel.uz/uploads/files/infos/1056/big_3%20%D0%98%D1%81%D1%81%D1%8B%D0%BA-%D0%9A%D1%83%D0%BB%D1%8C%20%E2%80%94%20%D0%B6%D0%B5%D0%BC%D1%87%D1%83%D0%B6%D0%B8%D0%BD%D0%B0%20%D0%A2%D1%8F%D0%BD%D1%8C-%D0%A8%D0%B0%D0%BD%D1%8F.jpg" alt="Иссык-Куль" loading="lazy" onerror="this.src='https://placehold.co/600x400/2563eb/white?text=Issyk-Kul'">
+      <div class="card-body">
+        <span class="card-tag">🌊 Озёрный край</span>
+        <h3>Иссык-Кульская область</h3>
+        <p style="color:var(--text-secondary);margin-bottom:0.75rem;">Жемчужина Кыргызстана. Незамерзающее озеро, горные ущелья, горячие источники.</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🏔️ Горы</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🌊 Озеро</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">♨️ Источники</small>
+        </div>
+        <p><strong>Климат:</strong> Умеренно-континентальный</p>
+        <p><strong>Население:</strong> ~500 000</p>
+        <p style="margin:0.75rem 0;font-style:italic;color:var(--text-muted);">"Второе по величине высокогорное озеро в мире после Титикака"</p>
+        <a href="regions/issykkul.html" class="btn btn-primary" style="padding:0.5rem 1.25rem;font-size:0.9rem;">Подробнее →</a>
+      </div>
+    </article>
+
+    <!-- Bishkek -->
+    <article class="card region-card-bishkek animate-on-scroll">
+      <img class="card-image" src="https://img.geliophoto.com/bishkek/07_bishkek.jpg" alt="Бишкек" loading="lazy" onerror="this.src='https://placehold.co/600x400/553c9a/white?text=Bishkek'">
+      <div class="card-body">
+        <span class="card-tag">🏙️ Столица</span>
+        <h3>Бишкек</h3>
+        <p style="color:var(--text-secondary);margin-bottom:0.75rem;">Современный город с широкими бульварами, парками и богатой культурной жизнью.</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🏛️ Музеи</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🌳 Парки</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🍽️ Рестораны</small>
+        </div>
+        <p><strong>Климат:</strong> Резко-континентальный</p>
+        <p><strong>Население:</strong> ~1 100 000</p>
+        <p style="margin:0.75rem 0;font-style:italic;color:var(--text-muted);">"Один из самых зелёных городов Центральной Азии"</p>
+        <a href="regions/bishkek.html" class="btn btn-primary" style="padding:0.5rem 1.25rem;font-size:0.9rem;">Подробнее →</a>
+      </div>
+    </article>
+
+    <!-- Osh -->
+    <article class="card region-card-osh animate-on-scroll">
+      <img class="card-image" src="https://3pulse.com/uploads/photo/45/64/32/2019/11/09/8ccb84aba0_medium.jpg" alt="Ош" loading="lazy" onerror="this.src='https://3pulse.com/uploads/photo/45/64/32/2019/11/09/8ccb84aba0_medium.jpg'">
+      <div class="card-body">
+        <span class="card-tag">🏛️ История</span>
+        <h3>Ошская область</h3>
+        <p style="color:var(--text-secondary);margin-bottom:0.75rem;">Южная столица с 3000-летней историей. Сулайман-Тоо, древние базары.</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🕌 ЮНЕСКО</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🛍️ Базар</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🏔️ Горы</small>
+        </div>
+        <p><strong>Климат:</strong> Континентальный, жаркое лето</p>
+        <p><strong>Население:</strong> ~1 400 000</p>
+        <p style="margin:0.75rem 0;font-style:italic;color:var(--text-muted);">"Ош старше Рима — городу более 3000 лет"</p>
+        <a href="regions/osh.html" class="btn btn-primary" style="padding:0.5rem 1.25rem;font-size:0.9rem;">Подробнее →</a>
+      </div>
+    </article>
+
+    <!-- Naryn -->
+    <article class="card region-card-naryn animate-on-scroll">
+      <img class="card-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXRXOA3K6WuBNG3iuWX6GeXrft3JMDk4yqIA&s" alt="Нарын" loading="lazy" onerror="this.src='https://placehold.co/600x400/718096/white?text=Naryn'">
+      <div class="card-body">
+        <span class="card-tag">⛰️ Высокогорье</span>
+        <h3>Нарынская область</h3>
+        <p style="color:var(--text-secondary);margin-bottom:0.75rem;">Самый высокогорный регион. Озеро Сон-Куль, Таш-Рабат, дикая природа.</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🏔️ 3000м+</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">⛺ Юрты</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🐎 Лошади</small>
+        </div>
+        <p><strong>Климат:</strong> Суровый высокогорный</p>
+        <p><strong>Население:</strong> ~290 000</p>
+        <p style="margin:0.75rem 0;font-style:italic;color:var(--text-muted);">"Здесь находится древний караван-сарай Таш-Рабат XV века"</p>
+        <a href="regions/narin.html" class="btn btn-primary" style="padding:0.5rem 1.25rem;font-size:0.9rem;">Подробнее →</a>
+      </div>
+    </article>
+
+    <!-- Jalal-Abad -->
+    <article class="card region-card-jalalabad animate-on-scroll">
+      <img class="card-image" src="https://president.kg/NEWS//NEWS/2024/4/58178/ee9ab6e7-a549-4b21-aef8-275ddde89d98/DOS_4770.JPG" alt="Джалал-Абад" loading="lazy" onerror="this.src='https://placehold.co/600x400/e53e3e/white?text=Jalal-Abad'">
+      <div class="card-body">
+        <span class="card-tag">🌰 Ореховый рай</span>
+        <h3>Джалал-Абадская область</h3>
+        <p style="color:var(--text-secondary);margin-bottom:0.75rem;">Крупнейшие ореховые леса мира. Арсланбоб, Сары-Челек, минеральные воды.</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🌳 Леса</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">💧 Озёра</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">♨️ Курорты</small>
+        </div>
+        <p><strong>Климат:</strong> Субтропический в долинах</p>
+        <p><strong>Население:</strong> ~1 260 000</p>
+        <p style="margin:0.75rem 0;font-style:italic;color:var(--text-muted);">"Арсланбоб — крупнейший ореховый лес на планете"</p>
+        <a href="regions/jalalabad.html" class="btn btn-primary" style="padding:0.5rem 1.25rem;font-size:0.9rem;">Подробнее →</a>
+      </div>
+    </article>
+
+    <!-- Talas -->
+    <article class="card region-card-talas animate-on-scroll">
+      <img class="card-image" src="https://24.kg/files/media/36/36819.jpg" alt="Талас" loading="lazy" onerror="this.src='https://placehold.co/600x400/38a169/white?text=Talas'">
+      <div class="card-body">
+        <span class="card-tag">🌿 Земля Манаса</span>
+        <h3>Таласская область</h3>
+        <p style="color:var(--text-secondary);margin-bottom:0.75rem;">Родина легендарного героя Манаса. Зелёные долины, мавзолей, горные реки.</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🏛️ Мавзолей</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🌾 Поля</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🏔️ Горы</small>
+        </div>
+        <p><strong>Климат:</strong> Умеренный</p>
+        <p><strong>Население:</strong> ~270 000</p>
+        <p style="margin:0.75rem 0;font-style:italic;color:var(--text-muted);">"Здесь находится мавзолей Манаса — символ кыргызского духа"</p>
+        <a href="regions/talas.html" class="btn btn-primary" style="padding:0.5rem 1.25rem;font-size:0.9rem;">Подробнее →</a>
+      </div>
+    </article>
+
+    <!-- Batken -->
+    <article class="card region-card-batken animate-on-scroll">
+      <img class="card-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEU7o5YSiFuFp-1XrrxJX1kPTkjPeUMyoGYA&s" alt="Баткен" loading="lazy" onerror="this.src='https://placehold.co/600x400/dd6b20/white?text=Batken'">
+      <div class="card-body">
+        <span class="card-tag">🏵️ Цветущий край</span>
+        <h3>Баткенская область</h3>
+        <p style="color:var(--text-secondary);margin-bottom:0.75rem;">Юго-западный регион. Абрикосовые сады, уникальные пещеры, горные вершины.</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🌸 Сады</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🕳️ Пещеры</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">⛰️ Пики</small>
+        </div>
+        <p><strong>Климат:</strong> Континентальный, тёплый</p>
+        <p><strong>Население:</strong> ~560 000</p>
+        <p style="margin:0.75rem 0;font-style:italic;color:var(--text-muted);">"Баткенский абрикос — один из лучших в мире"</p>
+        <a href="regions/batken.html" class="btn btn-primary" style="padding:0.5rem 1.25rem;font-size:0.9rem;">Подробнее →</a>
+      </div>
+    </article>
+
+    <!-- Chuy -->
+    <article class="card region-card-chuy animate-on-scroll">
+      <img class="card-image" src="https://cdn-1.aki.kg/st_gallery/5/977005.3e7b8820d832977a7de522ba4df50d1e.jpg" alt="Чуй" loading="lazy" onerror="this.src='https://placehold.co/600x400/319795/white?text=Chuy'">
+      <div class="card-body">
+        <span class="card-tag">🏞️ Долина</span>
+        <h3>Чуйская область</h3>
+        <p style="color:var(--text-secondary);margin-bottom:0.75rem;">Плодородная Чуйская долина. Башня Бурана, Ала-Арча, древние городища.</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🗼 Бурана</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🏞️ Ущелья</small>
+          <small style="background:var(--bg-primary);padding:0.2rem 0.6rem;border-radius:12px;">🌾 Поля</small>
+        </div>
+        <p><strong>Климат:</strong> Резко-континентальный</p>
+        <p><strong>Население:</strong> ~970 000</p>
+        <p style="margin:0.75rem 0;font-style:italic;color:var(--text-muted);">"Башня Бурана — один из древнейших минаретов Центральной Азии"</p>
+        <a href="regions/chuy.html" class="btn btn-primary" style="padding:0.5rem 1.25rem;font-size:0.9rem;">Подробнее →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Interactive Map -->
+<section class="section">
+  <div class="section-header"><h2 class="gradient-text">Карта областей</h2></div>
+  <div class="kg-map-container">
+    <div class="map-tooltip" id="mapTooltip"></div>
+    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" aria-label="Карта областей Кыргызстана">
+      <a href="regions/talas.html"><path d="M80,50 L160,45 L170,80 L155,110 L90,115 L70,80 Z" class="kg-map-region" fill="#38a169" stroke="#fff" stroke-width="2" data-region="Талас"/></a>
+      <a href="regions/chuy.html"><path d="M175,45 L310,40 L320,85 L290,130 L200,125 L175,80 Z" class="kg-map-region" fill="#319795" stroke="#fff" stroke-width="2" data-region="Чуй"/></a>
+      <a href="regions/bishkek.html"><circle cx="235" cy="70" r="8" fill="#553c9a" stroke="#fff" stroke-width="2" data-region="Бишкек"/></a>
+      <a href="regions/issykkul.html"><path d="M325,45 L500,35 L520,95 L490,150 L380,155 L325,90 Z" class="kg-map-region" fill="#3182ce" stroke="#fff" stroke-width="2" data-region="Иссык-Куль"/></a>
+      <a href="regions/narin.html"><path d="M295,130 L395,150 L410,220 L340,260 L270,245 L280,160 Z" class="kg-map-region" fill="#718096" stroke="#fff" stroke-width="2" data-region="Нарын"/></a>
+      <a href="regions/jalalabad.html"><path d="M205,130 L290,135 L270,250 L230,290 L175,260 L160,200 Z" class="kg-map-region" fill="#e53e3e" stroke="#fff" stroke-width="2" data-region="Джалал-Абад"/></a>
+      <a href="regions/osh.html"><path d="M230,290 L345,265 L380,340 L290,360 L210,350 Z" class="kg-map-region" fill="#d69e2e" stroke="#fff" stroke-width="2" data-region="Ош"/></a>
+      <a href="regions/batken.html"><path d="M160,260 L235,290 L210,350 L170,360 L120,330 L115,280 Z" class="kg-map-region" fill="#dd6b20" stroke="#fff" stroke-width="2" data-region="Баткен"/></a>
+    </svg>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col"><h4>🏔️ Сапар KG</h4><p style="color:var(--text-secondary);">Ваш путеводитель по Кыргызстану.</p></div>
+    <div class="footer-col"><h4>Области</h4><ul><li><a href="regions/issykkul.html">Иссык-Куль</a></li><li><a href="regions/osh.html">Ош</a></li><li><a href="regions/narin.html">Нарын</a></li></ul></div>
+    <div class="footer-col"><h4>Популярное</h4><ul><li><a href="places/alaarcha.html">Ала-Арча</a></li><li><a href="places/burana.html">Башня Бурана</a></li><li><a href="places/skazka.html">Каньон Сказка</a></li></ul></div>
+    <div class="footer-col"><h4>Сервисы</h4><ul><li><a href="register.html">Регистрация</a></li><li><a href="index.html">Главная</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Сапар KG. Все права защищены.</p></div>
+</footer>
+
+<button class="back-to-top" aria-label="Наверх">↑</button>
+
+<script>
+// Map tooltip
+document.querySelectorAll('.kg-map-region').forEach(el => {
+  el.addEventListener('mouseenter', (e) => {
+    const tooltip = document.getElementById('mapTooltip');
+    tooltip.textContent = el.dataset.region;
+    tooltip.style.display = 'block';
+    tooltip.style.left = e.pageX + 10 + 'px';
+    tooltip.style.top = e.pageY - 30 + 'px';
+  });
+  el.addEventListener('mousemove', (e) => {
+    const tooltip = document.getElementById('mapTooltip');
+    tooltip.style.left = e.pageX + 10 + 'px';
+    tooltip.style.top = e.pageY - 30 + 'px';
+  });
+  el.addEventListener('mouseleave', () => {
+    document.getElementById('mapTooltip').style.display = 'none';
+  });
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>

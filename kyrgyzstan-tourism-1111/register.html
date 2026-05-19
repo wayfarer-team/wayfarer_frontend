@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Регистрация и вход на Сапар KG — ваш аккаунт для планирования путешествий по Кыргызстану.">
+  <meta property="og:title" content="Регистрация — Сапар KG">
+  <meta property="og:description" content="Создайте аккаунт для сохранения маршрутов и избранных мест.">
+  <title>Регистрация — Сапар KG</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .auth-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 1rem 2rem;
+      background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 50%, #1a4731 100%);
+    }
+    .auth-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: var(--shadow-xl);
+    }
+    .auth-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .auth-tab {
+      flex: 1;
+      padding: 0.75rem;
+      border: 2px solid var(--border-color);
+      border-radius: 50px;
+      background: transparent;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      transition: all var(--transition);
+      font-family: inherit;
+    }
+    .auth-tab.active {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: #fff;
+    }
+    .auth-form { display: none; }
+    .auth-form.active { display: block; animation: fadeIn 0.4s ease; }
+    .password-strength {
+      height: 4px;
+      border-radius: 2px;
+      margin-top: 0.5rem;
+      transition: all 0.3s;
+    }
+    .strength-weak { width:33%; background:#e53e3e; }
+    .strength-medium { width:66%; background:#d69e2e; }
+    .strength-strong { width:100%; background:#38a169; }
+  </style>
+</head>
+<body>
+
+<div class="kyrgyz-pattern"></div>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">🏔️ Сапар KG</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="regions.html">Области</a></li>
+      <li><a href="places/alaarcha.html">Достопримечательности</a></li>
+      <li><a href="register.html" class="active">Войти</a></li>
+      <li><button class="theme-toggle" aria-label="Переключить тему">🌙</button></li>
+    </ul>
+    <button class="mobile-menu-btn" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main class="auth-container">
+  <div class="auth-card">
+    <div style="text-align:center;margin-bottom:1.5rem;">
+      <span style="font-size:3rem;">🏔️</span>
+      <h2 class="gradient-text">Добро пожаловать</h2>
+      <p style="color:var(--text-secondary);">Войдите или создайте аккаунт</p>
+    </div>
+
+    <div class="auth-tabs" role="tablist">
+      <button class="auth-tab active" data-tab="login" role="tab" aria-selected="true">Вход</button>
+      <button class="auth-tab" data-tab="register" role="tab" aria-selected="false">Регистрация</button>
+    </div>
+
+    <!-- Login Form -->
+    <form class="auth-form active" id="loginForm" novalidate>
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" class="form-input" placeholder="ваш@email.com" required>
+        <span class="form-error-msg" id="loginEmailError">Введите корректный email</span>
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">Пароль</label>
+        <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required minlength="6">
+        <span class="form-error-msg" id="loginPasswordError">Пароль должен быть не менее 6 символов</span>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Войти 🚀</button>
+      <p style="text-align:center;margin-top:1rem;color:var(--text-muted);font-size:0.85rem;">
+        Демо-режим: используйте любые данные
+      </p>
+    </form>
+
+    <!-- Register Form -->
+    <form class="auth-form" id="registerForm" novalidate>
+      <div class="form-group">
+        <label for="regUsername">Имя пользователя</label>
+        <input type="text" id="regUsername" class="form-input" placeholder="Ваше имя" required minlength="3">
+        <span class="form-error-msg" id="regUsernameError">Имя должно быть не менее 3 символов</span>
+      </div>
+      <div class="form-group">
+        <label for="regEmail">Email</label>
+        <input type="email" id="regEmail" class="form-input" placeholder="ваш@email.com" required>
+        <span class="form-error-msg" id="regEmailError">Введите корректный email</span>
+      </div>
+      <div class="form-group">
+        <label for="regPassword">Пароль</label>
+        <input type="password" id="regPassword" class="form-input" placeholder="••••••••" required minlength="6">
+        <div class="password-strength" id="passwordStrength"></div>
+        <span class="form-error-msg" id="regPasswordError">Минимум 6 символов, включая цифры и буквы</span>
+      </div>
+      <div class="form-group">
+        <label for="regConfirm">Подтвердите пароль</label>
+        <input type="password" id="regConfirm" class="form-input" placeholder="••••••••" required>
+        <span class="form-error-msg" id="regConfirmError">Пароли не совпадают</span>
+      </div>
+      <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">Создать аккаунт ✨</button>
+    </form>
+  </div>
+</main>
+
+<button class="back-to-top" aria-label="Наверх">↑</button>
+
+<script src="script.js"></script>
+<script>
+// Tab Switching
+document.querySelectorAll('.auth-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.auth-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    
+    const target = tab.dataset.tab;
+    document.getElementById('loginForm').classList.toggle('active', target === 'login');
+    document.getElementById('registerForm').classList.toggle('active', target === 'register');
+  });
+});
+
+// Password Strength
+document.getElementById('regPassword')?.addEventListener('input', function() {
+  const val = this.value;
+  const bar = document.getElementById('passwordStrength');
+  bar.className = 'password-strength';
+  if (val.length >= 8 && /[a-zA-Z]/.test(val) && /[0-9]/.test(val)) bar.classList.add('strength-strong');
+  else if (val.length >= 6) bar.classList.add('strength-medium');
+  else if (val.length > 0) bar.classList.add('strength-weak');
+});
+
+// Validation Helper
+function showFieldError(inputId, errorId, show) {
+  const input = document.getElementById(inputId);
+  const error = document.getElementById(errorId);
+  if (show) { input.classList.add('error'); error.classList.add('visible'); }
+  else { input.classList.remove('error'); error.classList.remove('visible'); }
+}
+
+function validateEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
+
+// Login
+document.getElementById('loginForm')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  let valid = true;
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  
+  if (!validateEmail(email)) { showFieldError('loginEmail','loginEmailError',true); valid = false; }
+  else showFieldError('loginEmail','loginEmailError',false);
+  
+  if (password.length < 6) { showFieldError('loginPassword','loginPasswordError',true); valid = false; }
+  else showFieldError('loginPassword','loginPasswordError',false);
+  
+  if (valid) {
+    const userData = { email, loggedInAt: new Date().toISOString() };
+    localStorage.setItem('sapar-user', JSON.stringify(userData));
+    showToast('Добро пожаловать! 🎉', 'success');
+    setTimeout(() => window.location.href = 'index.html', 1500);
+  }
+});
+
+// Register
+document.getElementById('registerForm')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  let valid = true;
+  
+  const username = document.getElementById('regUsername').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const password = document.getElementById('regPassword').value;
+  const confirm = document.getElementById('regConfirm').value;
+  
+  if (username.length < 3) { showFieldError('regUsername','regUsernameError',true); valid = false; }
+  else showFieldError('regUsername','regUsernameError',false);
+  
+  if (!validateEmail(email)) { showFieldError('regEmail','regEmailError',true); valid = false; }
+  else showFieldError('regEmail','regEmailError',false);
+  
+  if (password.length < 6) { showFieldError('regPassword','regPasswordError',true); valid = false; }
+  else showFieldError('regPassword','regPasswordError',false);
+  
+  if (password !== confirm) { showFieldError('regConfirm','regConfirmError',true); valid = false; }
+  else showFieldError('regConfirm','regConfirmError',false);
+  
+  if (valid) {
+    const userData = { username, email, registeredAt: new Date().toISOString() };
+    localStorage.setItem('sapar-user', JSON.stringify(userData));
+    showToast('Регистрация успешна! 🎉', 'success');
+    setTimeout(() => window.location.href = 'index.html', 1500);
+  }
+});
+</script>
+</body>
+</html>

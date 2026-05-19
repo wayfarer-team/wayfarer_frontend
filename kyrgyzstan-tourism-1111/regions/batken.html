@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Баткенская область — юго-западный регион Кыргызстана. Абрикосовые сады, горы, пещеры и древняя история.">
+  <meta property="og:title" content="Баткенская область — Сапар KG">
+  <title>Баткенская область — Сапар KG</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .region-header {
+      min-height: 50vh;
+      background: linear-gradient(135deg, #7b341e, #dd6b20, #ed8936);
+      display:flex; align-items:center; justify-content:center;
+      text-align:center; color:#fff; padding:6rem 2rem 3rem; position:relative; overflow:hidden;
+    }
+    .stat-value { font-size:2rem; font-weight:800; color:#dd6b20; }
+    .stat-card { background:var(--glass-bg); backdrop-filter:var(--glass-blur); border:1px solid var(--glass-border); border-radius:var(--radius-md); padding:1.5rem; text-align:center; }
+    .att-card { background:var(--bg-card); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-md); border:1px solid var(--border-color); }
+    .att-card img { width:100%; height:200px; object-fit:cover; }
+    .att-card .info { padding:1.25rem; }
+  </style>
+</head>
+<body>
+<div class="kyrgyz-pattern"></div>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">🏔️ Сапар KG</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Главная</a></li>
+      <li><a href="../regions.html" class="active">Области</a></li>
+      <li><a href="../places/alaarcha.html">Достопримечательности</a></li>
+      <li><a href="../register.html">Войти</a></li>
+      <li><button class="theme-toggle">🌙</button></li>
+    </ul>
+    <button class="mobile-menu-btn"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="region-header">
+  <div>
+    <span style="font-size:4rem;">🏵️</span>
+    <h1 style="font-size:clamp(2rem,5vw,4rem);">Баткенская область</h1>
+    <p style="font-size:1.2rem;opacity:0.9;">Цветущий край абрикосовых садов на юго-западе Кыргызстана</p>
+  </div>
+</header>
+
+<section class="section">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;">
+    <div class="stat-card"><div class="stat-value">17 000 км²</div><small>Площадь</small></div>
+    <div class="stat-card"><div class="stat-value">~560 000</div><small>Население</small></div>
+    <div class="stat-card"><div class="stat-value">Баткен</div><small>Адм. центр</small></div>
+    <div class="stat-card"><div class="stat-value">Абрикос</div><small>Главный фрукт</small></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="glass-card" style="padding:2rem;max-width:900px;margin:0 auto;">
+    <h2 class="gradient-text">История</h2>
+    <p>Баткенская область — самая молодая область Кыргызстана, образована в 1999 году. Расположена в юго-западной части страны, в Ферганской долине и окружающих её горах. Регион славится своими абрикосовыми садами — баткенский абрикос считается одним из лучших в мире.</p>
+    <p style="margin-top:1rem;">На территории области находятся древние пещеры Кан-и-Гут, уникальные геологические образования Ай-Кёль и живописные горные массивы Памиро-Алая. Это самый отдалённый и один из самых колоритных регионов страны.</p>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-secondary);padding:4rem 2rem;border-radius:var(--radius-xl);margin:2rem auto;max-width:1300px;">
+  <div class="section-header"><h2 class="gradient-text">Достопримечательности</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
+    <div class="att-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiq3xPUhSjv2n-PlRusPJBFt-xh_S4N_dpHQ&s" alt="Пещера Кан-и-Гут" loading="lazy" onerror="this.src='https://placehold.co/600x400/dd6b20/white?text=Kan-i-Gut'">
+      <div class="info"><h3>Пещера Кан-и-Гут</h3><p style="color:var(--text-secondary);">Древняя пещера-рудник, где добывали серебро и другие металлы с древних времён.</p></div>
+    </div>
+    <div class="att-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYiHm_Afn3uUjfRShWV5C2rvLbRjVF1NAYNg&s" alt="Ай-Кёль" loading="lazy" onerror="this.src='https://placehold.co/600x400/ed8936/white?text=Ai-Kol'">
+      <div class="info"><h3>Озеро Ай-Кёль</h3><p style="color:var(--text-secondary);">Живописное высокогорное озеро в окружении скал. Название переводится как «Лунное озеро».</p></div>
+    </div>
+    <div class="att-card">
+      <img src="https://cdn-1.aki.kg/st_gallery/66/1155166.130aa3d232d2e89846d33b6bb97b9cd9.jpg" alt="Горы Баткена" loading="lazy" onerror="this.src='https://placehold.co/600x400/c05621/white?text=Batken+Mountains'">
+      <div class="info"><h3>Горы Памиро-Алая</h3><p style="color:var(--text-secondary);">Величественные горные хребты на границе с Таджикистаном. Идеально для треккинга.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header"><h2 class="gradient-text">Кухня и особенности</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+    <div class="glass-card" style="padding:1.5rem;text-align:center;"><span style="font-size:3rem;">🍑</span><h3>Баткенский абрикос</h3><p style="color:var(--text-secondary);">Один из лучших сортов абрикоса в мире</p></div>
+    <div class="glass-card" style="padding:1.5rem;text-align:center;"><span style="font-size:3rem;">🍚</span><h3>Плов по-баткенски</h3><p style="color:var(--text-secondary);">С добавлением сухофруктов и местных специй</p></div>
+    <div class="glass-card" style="padding:1.5rem;text-align:center;"><span style="font-size:3rem;">🕳️</span><h3>Спелеотуризм</h3><p style="color:var(--text-secondary);">Уникальные пещеры для исследования</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="comments-container" data-place="batken-region" style="max-width:700px;margin:0 auto;">
+    <div class="section-header"><h2 class="gradient-text">Отзывы</h2></div>
+    <div class="comments-list"></div>
+    <form class="comment-form glass-card" style="padding:1.5rem;margin-top:1.5rem;">
+      <h4>Оставить отзыв</h4>
+      <div class="form-group"><input type="text" name="author" class="form-input" placeholder="Ваше имя" required></div>
+      <div class="form-group"><select name="rating" class="form-input" style="width:auto;"><option value="5">⭐⭐⭐⭐⭐</option><option value="4">⭐⭐⭐⭐</option></select></div>
+      <div class="form-group"><textarea name="text" class="form-input" rows="3" placeholder="Впечатления..." required></textarea></div>
+      <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+  </div>
+</section>
+
+<section class="section">
+  <div style="max-width:600px;margin:0 auto;">
+    <div class="planner-items glass-card" style="padding:1.5rem;"></div>
+    <button class="btn btn-gold" style="margin-top:1rem;" onclick="addToPlanner({id:'batken',name:'Баткенская область',region:'Баткен'});renderPlanner('.planner-items');">➕ В маршрут</button>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col"><h4>🏔️ Сапар KG</h4></div>
+    <div class="footer-col"><h4>Области</h4><ul><li><a href="issykkul.html">Иссык-Куль</a></li><li><a href="osh.html">Ош</a></li><li><a href="batken.html">Баткен</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Сапар KG.</p></div>
+</footer>
+
+<button class="back-to-top">↑</button>
+<script src="../script.js"></script>
+<script>document.addEventListener('DOMContentLoaded',()=>{initComments('batken-region');renderPlanner('.planner-items');});</script>
+</body>
+</html>

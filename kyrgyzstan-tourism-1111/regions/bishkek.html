@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Бишкек — столица Кыргызстана. Современный город с парками, музеями и богатой культурной жизнью.">
+  <meta property="og:title" content="Бишкек — Сапар KG">
+  <title>Бишкек — Сапар KG</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .region-header {
+      min-height: 50vh;
+      background: linear-gradient(135deg, #44337a, #553c9a, #805ad5);
+      display:flex; align-items:center; justify-content:center;
+      text-align:center; color:#fff; padding:6rem 2rem 3rem;
+    }
+    .stat-value { font-size:2rem; font-weight:800; color:#805ad5; }
+    .stat-card { background:var(--glass-bg); backdrop-filter:var(--glass-blur); border:1px solid var(--glass-border); border-radius:var(--radius-md); padding:1.5rem; text-align:center; }
+    .att-card { background:var(--bg-card); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-md); border:1px solid var(--border-color); }
+    .att-card img { width:100%; height:200px; object-fit:cover; }
+    .att-card .info { padding:1.25rem; }
+  </style>
+</head>
+<body>
+<div class="kyrgyz-pattern"></div>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">🏔️ Сапар KG</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Главная</a></li>
+      <li><a href="../regions.html" class="active">Области</a></li>
+      <li><a href="../places/alaarcha.html">Достопримечательности</a></li>
+      <li><a href="../register.html">Войти</a></li>
+      <li><button class="theme-toggle">🌙</button></li>
+    </ul>
+    <button class="mobile-menu-btn"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="region-header">
+  <div>
+    <span style="font-size:4rem;">🏙️</span>
+    <h1 style="font-size:clamp(2rem,5vw,4rem);">Бишкек</h1>
+    <p style="font-size:1.2rem;opacity:0.9;">Столица Кыргызстана — современный город у подножия гор Тянь-Шаня</p>
+  </div>
+</header>
+
+<section class="section">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;">
+    <div class="stat-card"><div class="stat-value">~1 100 000</div><small>Население</small></div>
+    <div class="stat-card"><div class="stat-value">160 км²</div><small>Площадь</small></div>
+    <div class="stat-card"><div class="stat-value">800 м</div><small>Высота</small></div>
+    <div class="stat-card"><div class="stat-value">1878 г.</div><small>Основан</small></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="glass-card" style="padding:2rem;max-width:900px;margin:0 auto;">
+    <h2 class="gradient-text">О городе</h2>
+    <p>Бишкек — столица и крупнейший город Кыргызстана. Основан в 1878 году как русская крепость Пишпек. Сегодня это современный город с широкими проспектами, многочисленными парками и скверами, за что его называют одним из самых зелёных городов Центральной Азии.</p>
+    <p style="margin-top:1rem;">Город расположен в Чуйской долине у подножия Кыргызского хребта. С любой точки города видны заснеженные вершины Тянь-Шаня. Бишкек — культурный, экономический и образовательный центр страны.</p>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-secondary);padding:4rem 2rem;border-radius:var(--radius-xl);margin:2rem auto;max-width:1300px;">
+  <div class="section-header"><h2 class="gradient-text">Что посмотреть</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
+    <div class="att-card">
+      <img src="https://triptokyrgyzstan.com/sites/default/files/styles/modal/public/media/image/c_sergey_kalachov_0.jpg?itok=ojrpS4P9" alt="Ала-Тоо" loading="lazy" onerror="this.src='https://placehold.co/600x400/553c9a/white?text=Ala-Too'">
+      <div class="info"><h3>Площадь Ала-Тоо</h3><p style="color:var(--text-secondary);">Центральная площадь с флагштоком, памятниками и Историческим музеем.</p></div>
+    </div>
+    <div class="att-card">
+      <img src="https://www.advantour.com/img/kyrgyzstan/bishkek/oak-park/oak-park3.jpg" alt="Дубовый парк" loading="lazy" onerror="this.src='https://placehold.co/600x400/2f855a/white?text=Oak+Park'">
+      <div class="info"><h3>Дубовый парк</h3><p style="color:var(--text-secondary);">Старейший парк города с вековыми дубами, скульптурами и уютными аллеями.</p></div>
+    </div>
+    <div class="att-card">
+      <img src="https://media-cdn.tripadvisor.com/media/photo-s/14/4b/87/f2/img-20180824-175736-814.jpg" alt="Ошский базар" loading="lazy" onerror="this.src='https://placehold.co/600x400/d69e2e/white?text=Osh+Bazaar'">
+      <div class="info"><h3>Ошский рынок</h3><p style="color:var(--text-secondary);">Крупнейший базар Бишкека. Специи, продукты, сувениры, кыргызские ремёсла.</p></div>
+    </div>
+    <div class="att-card">
+      <img src="https://inde.io/wp-content/uploads/2025/08/d8bf380365d2350724c86a9c078bd05b.jpg" alt="Музей ИЗО" loading="lazy" onerror="this.src='https://placehold.co/600x400/44337a/white?text=Museum'">
+      <div class="info"><h3>Кыргызский музей ИЗО</h3><p style="color:var(--text-secondary);">Богатая коллекция кыргызского искусства, войлочные ковры, картины.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header"><h2 class="gradient-text">Где поесть</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;">
+    <div class="glass-card" style="padding:1.25rem;"><h4>Ресторан «Фаиза»</h4><p style="color:var(--text-secondary);">Лагман, манты, плов. Легендарное место.</p><p>⭐ 4.5 | 💰 300–600 сом</p></div>
+    <div class="glass-card" style="padding:1.25rem;"><h4>Navat</h4><p style="color:var(--text-secondary);">Современная кыргызская кухня в стильном интерьере.</p><p>⭐ 4.6 | 💰 500–1000 сом</p></div>
+    <div class="glass-card" style="padding:1.25rem;"><h4>Coffee Relax</h4><p style="color:var(--text-secondary);">Популярная кофейня на бульваре Эркиндик.</p><p>⭐ 4.3 | 💰 200–500 сом</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="comments-container" data-place="bishkek" style="max-width:700px;margin:0 auto;">
+    <div class="section-header"><h2 class="gradient-text">Отзывы</h2></div>
+    <div class="comments-list"></div>
+    <form class="comment-form glass-card" style="padding:1.5rem;margin-top:1.5rem;">
+      <h4>Оставить отзыв</h4>
+      <div class="form-group"><input type="text" name="author" class="form-input" placeholder="Ваше имя" required></div>
+      <div class="form-group"><select name="rating" class="form-input" style="width:auto;"><option value="5">⭐⭐⭐⭐⭐</option><option value="4">⭐⭐⭐⭐</option></select></div>
+      <div class="form-group"><textarea name="text" class="form-input" rows="3" placeholder="Впечатления..." required></textarea></div>
+      <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+  </div>
+</section>
+
+<section class="section">
+  <div style="max-width:600px;margin:0 auto;">
+    <div class="planner-items glass-card" style="padding:1.5rem;"></div>
+    <button class="btn btn-gold" style="margin-top:1rem;" onclick="addToPlanner({id:'bishkek',name:'Бишкек',region:'Бишкек'});renderPlanner('.planner-items');">➕ В маршрут</button>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col"><h4>🏔️ Сапар KG</h4></div>
+    <div class="footer-col"><h4>Страницы</h4><ul><li><a href="../index.html">Главная</a></li><li><a href="../regions.html">Области</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Сапар KG.</p></div>
+</footer>
+
+<button class="back-to-top">↑</button>
+<script src="../script.js"></script>
+<script>document.addEventListener('DOMContentLoaded',()=>{initComments('bishkek');renderPlanner('.planner-items');});</script>
+</body>
+</html>
