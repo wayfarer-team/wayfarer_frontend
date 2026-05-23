@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Кыргызский орнамент">
-  <rect width="128" height="128" rx="24" fill="#b91c1c"/>
-  <circle cx="64" cy="64" r="36" fill="#f2b705"/>
-  <path d="M64 28c10 18 10 54 0 72M28 64c18-10 54-10 72 0M39 39c20 6 44 30 50 50M89 39c-6 20-30 44-50 50" fill="none" stroke="#7a1212" stroke-width="6" stroke-linecap="round"/>
-  <circle cx="64" cy="64" r="10" fill="#fff8ea"/>
-</svg>

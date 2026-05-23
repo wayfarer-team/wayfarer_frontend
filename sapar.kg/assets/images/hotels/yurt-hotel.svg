@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Юрточный отель">
-  <rect width="640" height="360" fill="#fff8ea"/>
-  <path d="M0 260 125 122l82 80 88-132 116 150 74-76 155 132v84H0z" fill="#12372a" opacity=".88"/>
-  <path d="M185 280c18-92 250-92 270 0z" fill="#f2b705" stroke="#7a1212" stroke-width="12"/>
-  <path d="M222 280c8-48 188-48 196 0" fill="none" stroke="#fff8ea" stroke-width="10"/>
-  <path d="M320 188v92" stroke="#7a1212" stroke-width="10" stroke-linecap="round"/>
-  <path d="M260 224h120" stroke="#7a1212" stroke-width="8" stroke-linecap="round"/>
-</svg>
