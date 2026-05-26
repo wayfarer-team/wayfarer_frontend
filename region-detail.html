@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Регион — Wayfarer KG</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    .region-hero {
+      min-height: 50vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      margin-top: 80px;
+    }
+    .region-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,15,8,0.88), transparent);
+    }
+    .region-hero-content {
+      position: relative;
+      z-index: 2;
+      color: var(--white);
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .region-hero-content h1 {
+      font-size: 3rem;
+      font-family: 'Cinzel Decorative', serif;
+      margin-bottom: 0.5rem;
+    }
+    .region-hero-content p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    .region-attractions {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    .region-attractions h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2rem;
+      color: var(--deep);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .attractions-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .attraction-item {
+      background: rgba(200,151,42,0.08);
+      border: 1px solid rgba(200,151,42,0.3);
+      padding: 2rem;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .attraction-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(26,15,8,0.2);
+    }
+    .attraction-item h3 {
+      color: var(--deep);
+      margin-bottom: 0.5rem;
+      font-family: 'Cinzel Decorative', serif;
+    }
+    .attraction-item p {
+      color: var(--mid);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .trip-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.9rem 2.8rem;
+      background: var(--crimson);
+      color: var(--white);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
+    .trip-btn:hover {
+      background: var(--dark);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="ornament-small">✦</span> WAYFARER KG
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="regions.html">Регионы</a></li>
+      <li><a href="attractions.html">Достопримечательности</a></li>
+      <li><a href="culture.html">Культура</a></li>
+      <li><a href="plan.html">Спланируйте поездку</a></li>
+      <li><a href="trips.html" id="tripsLink" style="display:none;">Мои поездки</a></li>
+    </ul>
+    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+    <div id="authBtn"></div>
+  </nav>
+
+  <!-- HERO РЕГИОНА -->
+  <section class="region-hero" id="regionHero"></section>
+
+  <!-- ДОСТОПРИМЕЧАТЕЛЬНОСТИ РЕГИОНА -->
+  <section class="region-attractions">
+    <h2>Достопримечательности этого региона</h2>
+    <div class="attractions-list" id="attractionsList"></div>
+    <div style="text-align: center; margin-top: 3rem;">
+      <button class="trip-btn" onclick="createTrip()" id="createTripBtn">Создать поездку в этот регион</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-ornament">
+      <svg viewBox="0 0 400 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 Q50,5 100,30 T200,30 T300,30 T400,30" stroke="#c8972a" stroke-width="1.5" fill="none" opacity="0.6"/>
+        <circle cx="200" cy="30" r="5" fill="#c8972a" opacity="0.8"/>
+        <circle cx="100" cy="30" r="3" fill="#c8972a" opacity="0.5"/>
+        <circle cx="300" cy="30" r="3" fill="#c8972a" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="footer-logo">WAYFARER KG</div>
+    <p class="footer-tagline">Самая красивая страна в мире — нетронутая, незабываемая.</p>
+    <p class="footer-copy">© 2025 Wayfarer KG. Все права защищены.</p>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+  <script>
+    const regionAttractions = {
+      "issyk-kul": [
+        { title: "Озеро Иссык-Куль", desc: "Второе по величине альпийское озеро в мире" },
+        { title: "Петроглифы Чолпон-Ата", desc: "Древние наскальные рисунки возрастом тысячи лет" },
+        { title: "Город Каракол", desc: "Ворота в треккинг Тянь-Шаня" },
+        { title: "Джети-Огуз", desc: "Красные скалы в форме семи быков" }
+      ],
+      "bishkek": [
+        { title: "Площадь Ала-Тоо", desc: "Сердце столицы, место исторических событий" },
+        { title: "Базар Ош", desc: "Ярмарка традиционного рынка с сотнями лавок" },
+        { title: "Государственный музей", desc: "История и культура Киргизии в одном месте" },
+        { title: "Парк Панфилова", desc: "Зелёный оазис в центре Бишкека" }
+      ],
+      "naryn": [
+        { title: "Озеро Сон-Куль", desc: "Жемчужина на высоте 3016 метров" },
+        { title: "Таш-Рабат", desc: "Средневековый караван-сарай на Великом Шёлковом пути" },
+        { title: "Кочкор", desc: "Деревня мастеров войлока и ремёсел" },
+        { title: "Горный хребет", desc: "Бесконечные альпийские пастбища" }
+      ],
+      "osh": [
+        { title: "Гора Сулеймана", desc: "Объект Всемирного наследия ЮНЕСКО" },
+        { title: "Базар Ош", desc: "Древнейший рынок Центральной Азии" },
+        { title: "Узгенские памятники", desc: "Архитектурные шедевры X века" },
+        { title: "Арсланбоб", desc: "Священный лес грецкого ореха" }
+      ],
+      "talas": [
+        { title: "Мавзолей Манаса Ордо", desc: "Святилище легендарного героя" },
+        { title: "Курганы Таласа", desc: "Древние захоронения киргизских вождей" },
+        { title: "Ущелье Киртманак", desc: "Живописное ущелье для треккинга" },
+        { title: "Конные фестивали", desc: "Традиционные спортивные соревнования" }
+      ],
+      "chui": [
+        { title: "Парк Ала-Арча", desc: "Национальный парк с драматичными ущельями" },
+        { title: "Башня Бурана", desc: "Древний минарет и музей под открытым небом" },
+        { title: "Долина Чон-Кемин", desc: "Эко-туризм в дикой природе" },
+        { title: "Ботанический заповедник", desc: "Редкие растения Киргизии" }
+      ]
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const regionId = sessionStorage.getItem('selectedRegion');
+      const region = regions.find(r => r.id === regionId);
+
+      if (!region) {
+        window.location.href = 'regions.html';
+        return;
+      }
+
+      // Установить герой
+      const hero = document.getElementById('regionHero');
+      hero.style.backgroundImage = `url('${region.image}')`;
+      hero.innerHTML += `
+        <div class="region-hero-content">
+          <h1>${region.name}</h1>
+          <p>${region.fullDesc}</p>
+        </div>
+      `;
+
+      // Отобразить достопримечательности
+      const list = document.getElementById('attractionsList');
+      const attractions = regionAttractions[regionId] || [];
+      attractions.forEach(attr => {
+        const div = document.createElement('div');
+        div.className = 'attraction-item';
+        div.innerHTML = `
+          <h3>${attr.title}</h3>
+          <p>${attr.desc}</p>
+        `;
+        list.appendChild(div);
+      });
+
+      // Показать кнопку создания поездки только если авторизован
+      const btn = document.getElementById('createTripBtn');
+      if (!Auth.isLoggedIn()) {
+        btn.textContent = 'Войдите, чтобы создать поездку';
+        btn.onclick = () => showAuthModal('login');
+      }
+
+      const tripsLink = document.getElementById('tripsLink');
+      if (Auth.isLoggedIn()) {
+        tripsLink.style.display = 'inline-block';
+      }
+    });
+
+    function createTrip() {
+      if (!Auth.isLoggedIn()) {
+        showAuthModal('login');
+        return;
+      }
+
+      const regionId = sessionStorage.getItem('selectedRegion');
+      const region = regions.find(r => r.id === regionId);
+
+      const tripName = prompt('Введите название вашей поездки:');
+      if (!tripName) return;
+
+      const trip = {
+        id: Date.now(),
+        name: tripName,
+        region: region.name,
+        regionId: regionId,
+        date: new Date().toLocaleDateString('ru-RU'),
+        status: 'планируется'
+      };
+
+      Auth.addTrip(trip);
+      alert(`Поездка "${tripName}" создана!`);
+      window.location.href = 'trips.html';
+    }
+  </script>
+</body>
+</html>
