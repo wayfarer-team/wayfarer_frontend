@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Достопримечательность — Wayfarer KG</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    .attraction-hero {
+      position: relative;
+      height: 60vh;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+
+    .attraction-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(26,15,8,0.6) 0%, rgba(192,24,42,0.3) 50%, rgba(26,15,8,0.6) 100%);
+    }
+
+    .attraction-hero-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 3rem;
+      color: var(--white);
+      z-index: 2;
+    }
+
+    .attraction-hero-tag {
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .attraction-hero-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .attraction-hero-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .attraction-hero-desc {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    .attraction-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2rem;
+      color: var(--deep);
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .section-text {
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .highlight-card {
+      background: linear-gradient(135deg, rgba(200,151,42,0.1) 0%, rgba(192,24,42,0.05) 100%);
+      padding: 1.5rem;
+      border: 1px solid rgba(200,151,42,0.3);
+      border-left: 4px solid var(--gold);
+      transition: all 0.3s;
+    }
+
+    .highlight-card:hover {
+      transform: translateX(10px);
+      border-left-color: var(--crimson);
+      box-shadow: 0 5px 20px rgba(200,151,42,0.2);
+    }
+
+    .highlight-card h4 {
+      color: var(--deep);
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-card p {
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .info-card {
+      background: var(--cream);
+      padding: 2rem;
+      border: 2px solid var(--gold);
+      text-align: center;
+    }
+
+    .info-card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-card-label {
+      font-size: 0.85rem;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card-value {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.3rem;
+      color: var(--deep);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      background-size: cover;
+      background-position: center;
+      border: 2px solid var(--gold);
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(200,151,42,0.3);
+    }
+
+    .gallery-item::before {
+      content: '🔍';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 2;
+    }
+
+    .gallery-item:hover::before {
+      opacity: 1;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--crimson);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      margin-top: 1rem;
+    }
+
+    .cta-button:hover {
+      background: var(--deep);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(192,24,42,0.3);
+    }
+
+    .back-nav {
+      padding: 2rem;
+      background: rgba(200,151,42,0.1);
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .back-nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .back-nav a:hover {
+      color: var(--crimson);
+    }
+
+    .divider {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+      margin: 3rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .attraction-hero {
+        height: 40vh;
+      }
+
+      .attraction-hero-content {
+        padding: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .attraction-content {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- НАВБАР -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">✦ WAYFARER KG</a>
+      <div class="nav-links">
+        <a href="index.html">Главная</a>
+        <a href="regions.html">Регионы</a>
+        <a href="attractions.html">Достопримечательности</a>
+        <a href="culture.html">Культура</a>
+        <a href="plan.html">План</a>
+        <a id="authBtn"></a>
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+
+  <!-- НАВИГАЦИЯ НАЗАД -->
+  <div class="back-nav">
+    <a href="attractions.html">← Вернуться к достопримечательностям</a>
+  </div>
+
+  <!-- ГЕРОЙ СЕКЦИЯ -->
+  <div class="attraction-hero" id="attractionHero">
+    <div class="attraction-hero-content">
+      <div class="attraction-hero-tag" id="heroTag"></div>
+      <h1 class="attraction-hero-title" id="heroTitle"></h1>
+      <div class="attraction-hero-divider"></div>
+      <p class="attraction-hero-desc" id="heroDesc"></p>
+    </div>
+  </div>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <div class="attraction-content">
+
+    <!-- ОБ ЭТОМ МЕСТЕ -->
+    <section>
+      <h2 class="section-title">📍 Об этом месте</h2>
+    
+      <p class="section-text" id="fullDesc"></p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ИСТОРИЯ -->
+    <section>
+      <h2 class="section-title">📚 История</h2>
+      <p class="section-text" id="fullHistory"></p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ОСНОВНЫЕ ФАКТЫ -->
+    <section>
+      <h2 class="section-title">✨ Основные факты</h2>
+      <div class="highlights-grid" id="highlightsGrid"></div>
+    </section>
+
+    <!-- ИНФОРМАЦИОННЫЕ КАРТОЧКИ -->
+    <div class="info-cards">
+      <div class="info-card">
+        <div class="info-card-icon">⏰</div>
+        <div class="info-card-label">Лучшее время</div>
+        <div class="info-card-value" id="bestTimeCard"></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🎯</div>
+        <div class="info-card-label">Уровень сложности</div>
+        <div class="info-card-value" id="difficultyCard"></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ЧТО СМОТРЕТЬ -->
+    <section>
+      <h2 class="section-title">👀 Что здесь смотреть</h2>
+      <div class="highlights-grid" id="whatToSeeGrid"></div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- КНОПКА ДЕЙСТВИЯ -->
+    <section style="text-align: center; padding: 3rem 0;">
+      <h2 class="section-title" style="border: none;">Готовы к приключению?</h2>
+      <p style="font-size: 1.1rem; color: var(--text); margin-bottom: 2rem;">
+        Плануйте свою поездку и посетите это удивительное место
+      </p>
+      <a href="plan.html" class="cta-button">📍 Планировать поездку</a>
+    </section>
+
+  </div>
+
+  <!-- ФУТЕР -->
+  <footer style="background: var(--deep); color: var(--cream); padding: 2rem; text-align: center;">
+    <p>&copy; 2024 Wayfarer KG. Откройте красоту Киргизии. 🏔️</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    const attractions = [
+      {
+        id: "khan-tengri",
+        icon: "🏔",
+        num: "01",
+        title: "Пик Хан-Тенгри",
+        tag: "Альпинизм",
+        desc: "Одна из красивейших гор мира — мраморная пирамида высотой 7010м над уровнем моря. Вершина светится красным на закате, откуда идёт имя «Повелитель неба».",
+        image: "images/khan-tengri.jpg",
+        fullDesc: "Пик Хан-Тенгри, что означает «Повелитель неба» на кыргызском, является одной из самых гармоничных и красивых вершин мира. Расположенный на границе Киргизии, Казахстана и Китая, этот пик является священным местом для альпинистов со всего мира.",
+        fullHistory: "Гора была впервые покорена в 1936 году советской экспедицией. Её мраморная вершина была названа именем легендарного правителя Чингизхана. Хан-Тенгри имеет исключительную форму конуса и считается одной из самых сложных восьмитысячников для восхождения из-за её технической сложности и непредсказуемых погодных условий.",
+        highlights: [
+          "Высота: 7010 метров над уровнем моря",
+          "Мраморная пирамида идеальной формы",
+          "Расположение на границе трёх стран",
+          "Красивейшая вершина мира по версии альпинистов",
+          "Первое восхождение: 1936 год",
+          "Связь с легендой о Чингизхане"
+        ],
+        whatToSee: [
+          "Восход солнца с вершины",
+          "Мраморные ледники",
+          "Панорамный вид на Тянь-Шань",
+          "Древние тибетские монастыри у подножия",
+          "Редкие животные высокогорья"
+        ],
+        bestTime: "Июль-август (альпинизм), май-сентябрь (просмотр)",
+        difficulty: "Экстремальный"
+      },
+      {
+        id: "son-kul",
+        icon: "🌊",
+        num: "02",
+        title: "Озеро Сон-Куль",
+        tag: "Опыт кочевников",
+        desc: "Драгоценное жёлто-голубое озеро на высоте 3016м, окружённое летними пастбищами, где кыргызские пастухи приносят свои юрты. Млечный путь здесь как ничто иное.",
+        image: "images/son-kul.jpg",
+        fullDesc: "Озеро Сон-Куль — это одно из самых красивых альпийских озёр в мире, расположенное на высоте 3016 метров. Название означает «горячее озеро» на кыргызском языке, несмотря на то, что оно довольно холодное. Озеро окружено бескрайними зелёными пастбищами и горами, где летом кыргызские пастухи со своими животными и юртами создают уникальный кочевой ландшафт.",
+        fullHistory: "Озеро Сон-Куль известно как один из основных летних пастбищ (джайлоо) кыргызского народа более 2000 лет. Кочевники летом ведут свои стада лошадей, овец и яков на берега озера, а зимой спускаются в долины. Это место является символом кочевого образа жизни, который до сих пор практикуется здесь.",
+        highlights: [
+          "Высота: 3016 метров над уровнем моря",
+          "Диаметр озера: 30 км",
+          "Кочевые юрт-лагеря летом",
+          "Бесценная экосистема высокогорной степи",
+          "Домашние животные: кони, овцы, яки",
+          "Один из крупнейших альпийских водоёмов"
+        ],
+        whatToSee: [
+          "Юрты кочевников и жизнь пастухов",
+          "Млечный путь ночью (одно из лучших мест на Земле)",
+          "Закат над озером",
+          "Дикие животные: сурки, горные козы",
+          "Традиционное кыргызское гостеприимство"
+        ],
+        bestTime: "июль-август (сезон юрт), но доступно май-сентябрь",
+        difficulty: "Средний"
+      },
+      {
+        id: "tash-rabat",
+        icon: "🏛",
+        num: "03",
+        title: "Таш-Рабат",
+        tag: "История Великого Шёлкового пути",
+        desc: "Замечательно сохранённый каменный караван-сарай XV века, скрытый в удалённой горной долине. Купцы когда-то укрывались здесь на древних торговых маршрутах между Востоком и Западом.",
+        image: "images/tash-rabat.jpg",
+        fullDesc: "Таш-Рабат — это одно из наиболее хорошо сохранившихся сооружений Великого Шёлкового пути. Караван-сарай был построен в XV веке и служил укрытием для купцов, путешественников и их животных во время опасного путешествия по горам. Слово 'Таш-Рабат' означает 'каменное здание' на кыргызском языке.",
+        fullHistory: "Расположенный на высоте 3200 метров в ущелье Сари-Чат, Таш-Рабат был важной остановкой на маршруте Великого Шёлкового пути между Китаем и Средней Азией. Караван-сарай построен из камня без использования раствора - очень сложная техника каменной кладки. Внутри есть купол и комнаты для жилища. Археологи нашли здесь монеты, керамику и другие артефакты, подтверждающие его важность как торговой перекрёстки.",
+        highlights: [
+          "Построен в XV веке",
+          "Высота: 3200 метров",
+          "Круглое сооружение с куполом",
+          "Объект Всемирного наследия ЮНЕСКО",
+          "Часть Великого Шёлкового пути",
+          "Прекрасное состояние сохранности"
+        ],
+        whatToSee: [
+          "Каменная кладка без раствора",
+          "Куполообразная конструкция",
+          "Комнаты для отдыха торговцев",
+          "Стойла для животных",
+          "Окружающие горные пейзажи",
+          "Артефакты древней торговли"
+        ],
+        bestTime: "июнь-сентябрь (доступ зимой затруднён)",
+        difficulty: "Средний (дорога грунтовая)"
+      },
+      {
+        id: "ala-archa",
+        icon: "⛰",
+        num: "04",
+        title: "Каньон Ала-Арча",
+        tag: "Треккинг",
+        desc: "Национальный парк всего в 40км от Бишкека с ледниками, ревущими реками и высокогорными вершинами. Рай для туристов и альпинистов всех уровней.",
+        image: "images/ala-archa.jpg",
+        fullDesc: "Ала-Арча — первый национальный парк Киргизии, основанный в 1976 году. Он расположен всего в 40 километрах от столицы Бишкека и является популярным местом для однодневных и многодневных треккинга. Парк охватывает площадь 23,000 гектаров и включает семь ущелий с ледниками, водопадами и альпийскими лугами.",
+        fullHistory: "Парк Ала-Арча был основан в советское время как биосферный заповедник. С тех пор он стал важным центром альпинизма и туризма. Ледник Ала-Арча, самый большой ледник в Киргизии вблизи Бишкека, питает реку Большая Ала-Арча. В парке зарегистрировано более 60 видов млекопитающих и 130 видов птиц.",
+        highlights: [
+          "Первый национальный парк Киргизии",
+          "Расстояние от Бишкека: 40 км",
+          "Площадь: 23,000 гектаров",
+          "Семь ущелий с ледниками",
+          "Вершины от 3000 до 4400 метров",
+          "Богатая флора и фауна"
+        ],
+        whatToSee: [
+          "Ледник Ала-Арча",
+          "Водопады и горные реки",
+          "Альпийские луга",
+          "Редкие животные: снежный барс, горный баран",
+          "Панорамный вид на Бишкек снизу",
+          "Скальные образования"
+        ],
+        bestTime: "май-октябрь (летний треккинг)",
+        difficulty: "От лёгкого до сложного (выбор маршрутов)"
+      },
+      {
+        id: "berkut",
+        icon: "🦅",
+        num: "05",
+        title: "Соколиная охота",
+        tag: "Культурное наследие",
+        desc: "Смотрите, как мастера Беркутчи работают с золотыми орлами так же, как их предки 4000 лет назад. Всемирные кочевые игры, проводимые в Кыргызстане, празднуют это и десятки других древних навыков.",
+        image: "images/berkut.jpg",
+        fullDesc: "Беркутчи — это традиционные охотники, которые дрессируют золотых орлов для охоты. Эта практика существует в Киргизии, Казахстане и других странах Центральной Азии на протяжении более 4000 лет. Охотник и орёл работают вместе как единая команда, в основе которой лежит доверие и понимание.",
+        fullHistory: "Культура соколиной охоты была включена в список Шедевров ЮНЕСКО устного и нематериального наследия человечества в 2010 году. Беркутчи передают свои знания от поколения к поколению, обучая молодых орлов ловле дичи. Традиция остаётся жива в Киргизии, особенно среди кочевников высокогорья. Золотой орёл может весить до 6 килограммов и иметь размах крыльев 2.5 метра.",
+        highlights: [
+          "Возраст традиции: более 4000 лет",
+          "Включена в список Шедевров ЮНЕСКО",
+          "Золотые орлы весом до 6 кг",
+          "Размах крыльев: до 2.5 метра",
+          "Охотник и орёл работают как команда",
+          "Передача знаний от поколения к поколению"
+        ],
+        whatToSee: [
+          "Демонстрация охоты с орлом",
+          "Тренировка орла",
+          "Связь между охотником и птицей",
+          "Традиционная одежда Беркутчи",
+          "Ловля дичи с воздуха",
+          "Всемирные кочевые игры (сентябрь)"
+        ],
+        bestTime: "сентябрь-март (сезон охоты, Всемирные кочевые игры в сентябре)",
+        difficulty: "Зрелищный (без физических нагрузок)"
+      },
+      {
+        id: "jeti-oguz",
+        icon: "🌋",
+        num: "06",
+        title: "Скалы Джети-Огуз",
+        tag: "Природное чудо",
+        desc: "Семь ярко-красных песчаниковых образований, называемые «Семь быков», резко возвышаются над зелёной долиной рядом с Караколом. Священное место, вплетённое в кыргызскую фольклорную легенду.",
+        image: "images/jeti-oguz.jpg",
+        fullDesc: "Джети-Огуз — это серия ярко-красных скальных образований, которые возвышаются над зелёной долиной у реки Джети-Огуз. Название означает 'Семь быков' на кыргызском языке, и скалы действительно напоминают стоящих рядом быков. Эти скалы состоят из красного песчаника, который приобретает особенно яркий цвет при закате солнца.",
+        fullHistory: "Скалы Джети-Огуз связаны с древней легендой кыргызского народа. Согласно преданию, давным-давно злой правитель держал пленных. Семь быков чудесным образом появились и помогли им сбежать, но затем превратились в камень на этом месте, чтобы вечно охранять эту землю. Легенда живёт в сердцах кыргызского народа, и это место считается священным.",
+        highlights: [
+          "Семь красных скальных образований",
+          "Красный песчаник (оксид железа)",
+          "Расположение: рядом с Караколом",
+          "Высота скал: 150-200 метров",
+          "Древняя кыргызская легенда",
+          "Особенно красиво на закате"
+        ],
+        whatToSee: [
+          "Семь каменных быков",
+          "Красный песчаник",
+          "Окружающие зелёные пастбища",
+          "Река Джети-Огуз",
+          "Горячие источники Джети-Огуз",
+          "Закат над скалами"
+        ],
+        bestTime: "май-октябрь (лучше в июне-августе)",
+        difficulty: "Лёгкий"
+      }
+    ];
+
+    function loadAttraction() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const paramId = urlParams.get('id');
+      const attractionId = sessionStorage.getItem('selectedAttraction') || paramId;
+      if (!attractionId) {
+        window.location.href = 'attractions.html';
+        return;
+      }
+
+      const attraction = attractions.find(a => a.id === attractionId);
+      if (!attraction) {
+        window.location.href = 'attractions.html';
+        return;
+      }
+
+      // Установка фона героя
+      document.getElementById('attractionHero').style.backgroundImage = `url('${attraction.image}')`;
+
+      // Заполнение содержимого
+      document.getElementById('heroTag').textContent = attraction.tag;
+      document.getElementById('heroTitle').textContent = attraction.title;
+      document.getElementById('heroDesc').textContent = attraction.desc;
+      document.getElementById('fullDesc').textContent = attraction.fullDesc;
+      document.getElementById('fullHistory').textContent = attraction.fullHistory;
+
+      // Основные факты
+      const highlightsGrid = document.getElementById('highlightsGrid');
+      attraction.highlights.forEach(highlight => {
+        const card = document.createElement('div');
+        card.className = 'highlight-card';
+        card.innerHTML = `
+          <h4>✓</h4>
+          <p>${highlight}</p>
+        `;
+        highlightsGrid.appendChild(card);
+      });
+
+      // Информационные карточки
+      document.getElementById('bestTimeCard').textContent = attraction.bestTime;
+      document.getElementById('difficultyCard').textContent = attraction.difficulty;
+
+      // Что смотреть
+      const whatToSeeGrid = document.getElementById('whatToSeeGrid');
+      attraction.whatToSee.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'highlight-card';
+        card.innerHTML = `
+          <h4>👁️</h4>
+          <p>${item}</p>
+        `;
+        whatToSeeGrid.appendChild(card);
+      });
+
+      // Обновление заголовка страницы
+      document.title = `${attraction.title} — Wayfarer KG`;
+    }
+
+    // Загрузка при готовности DOM
+    document.addEventListener('DOMContentLoaded', loadAttraction);
+  </script>
+</body>
+</html>
