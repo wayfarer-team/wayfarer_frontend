@@ -319,8 +319,13 @@ function openRegionPage(regionId) {
 
 // ---- ФУНКЦИЯ ОТКРЫТИЯ СТРАНИЦЫ ДОСТОПРИМЕЧАТЕЛЬНОСТИ ----
 function openAttractionPage(attractionId) {
-  sessionStorage.setItem('selectedAttraction', attractionId);
-  window.location.href = 'attraction-detail.html';
+  try {
+    sessionStorage.setItem('selectedAttraction', attractionId);
+  } catch (e) {
+    // ignore storage errors
+  }
+  const url = `attraction-detail.html?id=${encodeURIComponent(attractionId)}`;
+  window.location.assign(url);
 }
 
 // ---- РЕНДЕР ДОСТОПРИМЕЧАТЕЛЬНОСТЕЙ ----

@@ -289,6 +289,7 @@
     <!-- ОБ ЭТОМ МЕСТЕ -->
     <section>
       <h2 class="section-title">📍 Об этом месте</h2>
+    
       <p class="section-text" id="fullDesc"></p>
     </section>
 
@@ -527,7 +528,9 @@
     ];
 
     function loadAttraction() {
-      const attractionId = sessionStorage.getItem('selectedAttraction');
+      const urlParams = new URLSearchParams(window.location.search);
+      const paramId = urlParams.get('id');
+      const attractionId = sessionStorage.getItem('selectedAttraction') || paramId;
       if (!attractionId) {
         window.location.href = 'attractions.html';
         return;
