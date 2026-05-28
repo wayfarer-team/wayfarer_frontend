@@ -1,23 +1,63 @@
-// Система регистрации и авторизации
-const Auth = {
-  users: JSON.parse(localStorage.getItem('wayfarer_users')) || {},
-  currentUser: JSON.parse(localStorage.getItem('wayfarer_current_user')) || null,
+const API_URL = "https://chatter-shortwave-vagrantly.ngrok-free.dev";
 
-  register(email, password, name) {
-    if (this.users[email]) return { success: false, message: 'Пользователь уже существует' };
-    this.users[email] = { password, name, trips: [] };
-    localStorage.setItem('wayfarer_users', JSON.stringify(this.users));
-    return { success: true, message: 'Успешно зарегистрирован' };
+const Auth = {
+  currentUser: null,
+
+  async register(email, password, name) {
+    try {
+      const response = await fetch(`${API_URL}/api/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          name
+        })
+      });
+
+      return await response.json();
+
+    } catch (error) {
+      console.error(error);
+
+      return {
+        success: false,
+        message: "Ошибка сервера"
+      };
+    }
   },
 
-  login(email, password) {
-    const user = this.users[email];
-    if (!user || user.password !== password) {
-      return { success: false, message: 'Неверный email или пароль' };
+  async login(email, password) {
+    try {
+      const response = await fetch(`${API_URL}/api/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email,
+          password
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        this.currentUser = result.user;
+      }
+
+      return result;
+
+    } catch (error) {
+      console.error(error);
+
+      return {
+        success: false,
+        message: "Ошибка сервера"
+      };
     }
-    this.currentUser = { email, name: user.name, trips: user.trips };
-    localStorage.setItem('wayfarer_current_user', JSON.stringify(this.currentUser));
-    return { success: true, message: 'Успешно вошли' };
   },
 
   logout() {
@@ -33,18 +73,26 @@ const Auth = {
     return this.currentUser;
   },
 
-  addTrip(trip) {
-    if (!this.currentUser) return false;
-    const email = this.currentUser.email;
-    this.users[email].trips.push(trip);
-    this.currentUser.trips.push(trip);
-    localStorage.setItem('wayfarer_users', JSON.stringify(this.users));
-    localStorage.setItem('wayfarer_current_user', JSON.stringify(this.currentUser));
-    return true;
+  async getTrips() {
+    try {
+      const response = await fetch(`${API_URL}/api/trips`);
+      return await response.json();
+
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   },
 
-  getTrips() {
-    return this.currentUser?.trips || [];
+  async getEvents() {
+    try {
+      const response = await fetch(`${API_URL}/api/events`);
+      return await response.json();
+
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 };
 
@@ -91,7 +139,7 @@ function getRegisterForm() {
   `;
 }
 
-function switchAuthForm(e, type) {
+async function handleLogin(e) {
   e.preventDefault();
   document.getElementById('authContainer').innerHTML = type === 'login' ? getLoginForm() : getRegisterForm();
 }
@@ -100,21 +148,28 @@ function handleLogin(e) {
   e.preventDefault();
   const email = document.getElementById('loginEmail').value;
   const password = document.getElementById('loginPassword').value;
-  const result = Auth.login(email, password);
+
+  const result = await Auth.login(email, password);
+
   alert(result.message);
+
   if (result.success) {
     closeAuthModal();
     location.reload();
   }
 }
 
-function handleRegister(e) {
+async function handleRegister(e) {
   e.preventDefault();
+
   const name = document.getElementById('regName').value;
   const email = document.getElementById('regEmail').value;
   const password = document.getElementById('regPassword').value;
-  const result = Auth.register(email, password, name);
+
+  const result = await Auth.register(email, password, name);
+
   alert(result.message);
+
   if (result.success) {
     document.getElementById('authContainer').innerHTML = getLoginForm();
   }
@@ -122,18 +177,32 @@ function handleRegister(e) {
 
 function closeAuthModal() {
   const overlay = document.getElementById('authModalOverlay');
-  if (overlay) overlay.remove();
+
+  if (overlay) {
+    overlay.remove();
+  }
 }
 
 function updateAuthUI() {
   const authBtn = document.getElementById('authBtn');
+
   if (!authBtn) return;
 
   if (Auth.isLoggedIn()) {
     const user = Auth.getCurrentUser();
-    authBtn.innerHTML = `${user.name} <button class="logout-btn" onclick="handleLogout()">Выход</button>`;
+
+    authBtn.innerHTML = `
+      ${user?.name || "User"}
+      <button class="logout-btn" onclick="handleLogout()">
+        Выход
+      </button>
+    `;
   } else {
-    authBtn.innerHTML = '<a href="register.html" style="color: var(--white); text-decoration: none;"><button class="login-btn" style="cursor: pointer;">Вход</button></a>';
+    authBtn.innerHTML = `
+      <button class="login-btn" onclick="showAuthModal('login')">
+        Вход
+      </button>
+    `;
   }
 }
 
