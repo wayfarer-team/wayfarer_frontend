@@ -150,8 +150,10 @@
     <p class="footer-copy">© 2025 Wayfarer KG. Все права защищены.</p>
   </footer>
 
-  <script src="auth.js"></script>
-  <script src="script.js"></script>
+  <script src="auth.js">function completeTrip(id){const comment=prompt("Комментарий о поездке:");const rating=prompt("Оценка от 1 до 5:");alert(`Спасибо! Ваш отзыв: ${comment} | Оценка: ${rating}`);}
+</script>
+  <script src="script.js">function completeTrip(id){const comment=prompt("Комментарий о поездке:");const rating=prompt("Оценка от 1 до 5:");alert(`Спасибо! Ваш отзыв: ${comment} | Оценка: ${rating}`);}
+</script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       if (!Auth.isLoggedIn()) {
@@ -183,10 +185,9 @@
                 <p class="trip-region">📍 ${trip.region}</p>
                 <p>Создана: ${trip.date}</p>
                 <p>Статус: <strong>${trip.status}</strong></p>
-              </div>
-              <div class="trip-actions">
+              <p>Маршрут: ${trip.from || '—'} → ${trip.to || '—'}</p></div><div class="trip-actions">
                 <button class="trip-btn" onclick="editTrip(${trip.id})">Редактировать</button>
-                <button class="trip-btn trip-btn-delete" onclick="deleteTrip(${trip.id})">Удалить</button>
+                <button class="trip-btn trip-btn-delete" onclick="deleteTrip(${trip.id})">Удалить</button><button class="trip-btn" onclick="completeTrip(${trip.id})">Завершить</button>
               </div>
             </div>
           `;
@@ -225,6 +226,7 @@
         location.reload();
       }
     }
-  </script>
+  function completeTrip(id){const comment=prompt("Комментарий о поездке:");const rating=prompt("Оценка от 1 до 5:");alert(`Спасибо! Ваш отзыв: ${comment} | Оценка: ${rating}`);}
+</script>
 </body>
 </html>
