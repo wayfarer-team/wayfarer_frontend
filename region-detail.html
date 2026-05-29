@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Регион — Wayfarer KG</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    .region-hero {
+      min-height: 50vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      margin-top: 80px;
+    }
+    .region-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,15,8,0.88), transparent);
+    }
+    .region-hero-content {
+      position: relative;
+      z-index: 2;
+      color: var(--white);
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .region-hero-content h1 {
+      font-size: 3rem;
+      font-family: 'Cinzel Decorative', serif;
+      margin-bottom: 0.5rem;
+    }
+    .region-hero-content p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    .region-attractions {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    .region-attractions h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2rem;
+      color: var(--deep);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .attractions-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .attraction-item {
+      overflow:hidden;
+      border-radius:22px;
+      background: rgba(200,151,42,0.08);
+      border: 1px solid rgba(200,151,42,0.3);
+      padding: 2rem;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .attraction-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(26,15,8,0.2);
+    }
+    .attraction-item h3 {
+      color: var(--deep);
+      margin-bottom: 0.5rem;
+      font-family: 'Cinzel Decorative', serif;
+    }
+    .attraction-item img{width:100%;height:220px;object-fit:cover;margin-bottom:15px;border-radius:16px}.attraction-item p {
+      color: var(--mid);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .trip-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.9rem 2.8rem;
+      background: var(--crimson);
+      color: var(--white);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
+    .trip-btn:hover {
+      background: var(--dark);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="ornament-small">✦</span> WAYFARER KG
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="regions.html">Регионы</a></li>
+      <li><a href="attractions.html">Достопримечательности</a></li>
+      <li><a href="culture.html">Культура</a></li>
+      <li><a href="plan.html">Спланируйте поездку</a></li>
+      <li><a href="trips.html" id="tripsLink" style="display:none;">Мои поездки</a></li>
+    </ul>
+    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+    <div id="authBtn"></div>
+  </nav>
+
+  <!-- HERO РЕГИОНА -->
+  <section class="region-hero" id="regionHero"></section>
+
+  <!-- ДОСТОПРИМЕЧАТЕЛЬНОСТИ РЕГИОНА -->
+  <section class="region-attractions">
+    <h2>Достопримечательности этого региона</h2>
+    <div class="attractions-list" id="attractionsList"></div>
+    <div style="text-align: center; margin-top: 3rem;">
+      <button class="trip-btn" onclick="createTrip()" id="createTripBtn">Создать поездку в этот регион</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-ornament">
+      <svg viewBox="0 0 400 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 Q50,5 100,30 T200,30 T300,30 T400,30" stroke="#c8972a" stroke-width="1.5" fill="none" opacity="0.6"/>
+        <circle cx="200" cy="30" r="5" fill="#c8972a" opacity="0.8"/>
+        <circle cx="100" cy="30" r="3" fill="#c8972a" opacity="0.5"/>
+        <circle cx="300" cy="30" r="3" fill="#c8972a" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="footer-logo">WAYFARER KG</div>
+    <p class="footer-tagline">Самая красивая страна в мире — нетронутая, незабываемая.</p>
+    <p class="footer-copy">© 2025 Wayfarer KG. Все права защищены.</p>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+  <script>
+    const regionAttractions = {
+      "issyk-kul": [
+        { title: "Озеро Иссык-Куль", desc: "Второе по величине альпийское озеро в мире", image: "images/issyk-kul2.jpg" },
+        { title: "Каньон Сказка", desc: "Необычные красные и жёлтые скалы разных форм. Место похоже на сказочный мир и очень популярно для фотографий.", image: "images/skazka.jpg" },
+        { title: "Горячие источники Ак-Суу", desc: "Место для отдыха и купания в тёплой минеральной воде среди горной природы.", image: "images/hot-Ak-suu.jpg" },
+        { title: "Ущелье Барскоон", desc: "Известное ущелье с водопадами, лесами и красивыми горными дорогами.", image: "images/Ushele_Barskaun.jpg" },
+        { title: "Семёновское ущелье", desc: "Одно из самых зелёных и красивых ущелий Иссык-Куля. Подходит для пикников, прогулок и отдыха на природе.", image: "images/semenovskoe.jpg" },
+        { title: "Григорьевское ущелье", desc: "Популярное место среди туристов с реками, горами и юртами.", image: "images/grigorievskoe.jpg" },
+        { title: "Музей Пржевальского", desc: "Исторический музей в Караколе, посвящённый знаменитому путешественнику Николаю Пржевальскому.", image: "images/przhevalsky.jpg" },
+        { title: "Орнок", desc: "Древнее историческое поселение рядом с Иссык-Кулем, включённое в список культурного наследия.", image: "images/ornok.jpg" },
+        { title: "Кырчын жайлоо", desc: "Большое красивое пастбище, где проходили Всемирные игры кочевников.", image: "images/kirchyn-jayloo.jpg" },
+        { title: "Мёртвое озеро", desc: "Небольшое солёное озеро рядом с Иссык-Кулем, где очень легко держаться на воде.", image: "images/mertvoe-ozero.jpg" },
+        { title: "Ак-Сай каньон", desc: "Живописный каньон с необычными скалами и панорамными видами.", image: "images/ak-sai-kanyon.jpg" },
+        { title: "Петроглифы Чолпон-Ата", desc: "Древние наскальные рисунки возрастом тысячи лет", image: "images/petroglyphs.jpg" },
+        { title: "Город Каракол", desc: "Ворота в треккинг Тянь-Шаня", image: "images/karakol.jpg" },
+        { title: "Джети-Огуз", desc: "Красные скалы в форме семи быков", image: "images/dzheti-oguz.jpg" }
+      ],
+      "bishkek": [
+        { title: "Площадь Ала-Тоо", desc: "Сердце столицы, место исторических событий",image: "images/площадь-ала-тоо.jpg" },
+        { title: "Дубовый парк", desc: "Один из старейших парков Бишкека. Хорошее место для прогулок, отдыха и встреч с друзьями.",image: "images/дубовый-парк.jpg" },
+        { title: "Парк Панфилова", desc: "Популярный городской парк с аттракционами, кафе и местами для отдыха всей семьёй.",image: "images/panfilov-park.jpg" },
+        { title: "Музей имени Гапара Айтиева", desc: "Главный художественный музей Кыргызстана. Здесь можно увидеть картины кыргызских художников и современные выставки.",image: "images/музей-им-гапара-атиева.jpg" },
+        { title: "Парк Победы", desc: "Большой парк на юге Бишкека с памятниками, аллеями и красивым видом на город.",image: "images/парк-победы.jpg" },
+        { title: "Ботанический сад", desc: "Тихое и зелёное место для прогулок и отдыха. Особенно красиво весной и летом.",image: "images/ботанический-сад.jpg" },
+        { title: "Базар Ош", desc: "Ярмарка традиционного рынка с сотнями лавок" ,image: "images/Osh-Bazaar.jpg"},
+        { title: "Государственный музей", desc: "История и культура Киргизии в одном месте",image: "images/государственный-музей.jpg" },
+        { title: "Парк Панфилова", desc: "Зелёный оазис в центре Бишкека",image: "images/panfilov-park.jpg" }
+      ],
+      "naryn": [
+        { title: "Озеро Сон-Куль", desc: "Жемчужина на высоте 3016 метров", image: "images/son-kul.jpg" },
+        { title: "Озеро Кель-Суу", desc: "Живописное горное озеро с бирюзовой водой и высокими скалами вокруг. Одно из самых популярных мест для путешественников и фотографов.", image: "images/kel-su.jpg" },
+        { title: "Город Нарын", desc: "Главный город области, расположенный среди гор. Здесь можно познакомиться с культурой, национальной кухней и жизнью местных жителей.", image: "images/город-нарын.jpg" },
+        { title: "Перевал Торугарт", desc: "Известный горный перевал на границе с Китаем. Туристов привлекают красивые виды и высокогорная природа.", image: "images/torugart.jpg" },
+        { title: "Национальный парк Салкын-Төр", desc: "Красивое место с лесами, реками и чистым воздухом. Подходит для отдыха, походов и пикников на природе.", image: "images/salkin-tor.jpg" },
+        { title: "Ущелье Кок-Кыя", desc: "Красивое горное ущелье с зелёными пастбищами, реками и высокими скалами. Популярное место для конных туров и походов.", image: "images/ущелье-кок-кыя.jpg" },
+        { title: "Таш-Рабат", desc: "Средневековый караван-сарай на Великом Шёлковом пути", image: "images/ташрабат.jpg" },
+        { title: "Кочкор", desc: "Деревня мастеров войлока и ремёсел", image: "images/кочкор.jpg" },
+        { title: "Горный хребет", desc: "Бесконечные альпийские пастбища", image: "images/горный-хребет.jpg" }
+      ],
+      "osh": [
+        { title: "Гора Сулеймана", desc: "Объект Всемирного наследия ЮНЕСКО", image: "images/сулейман-тоо.jpg" },
+        { title: "Узген", desc: "Древнейший город Центральной Азии", image: "images/узген.jpg" },
+        { title: "Алайская ддолина", desc: "Красивая долина с живописными пейзажами", image: "images/алайская-долина.jpg" },
+        { title: "Озеро Тулпар-Кол", desc: "Высокогорное озеро с живописными пейзажами рядом с пиком Лелина", image: "images/тулпар-кёль.jpg" },
+        { title: "Пик Лелина", desc: "Известная снежная вершина", image: "images/пик-лелина.jpg" },
+        { title: "Кыргыз-Ата", desc: "Зелёное ущелье для отдыха", image: "images/кыргыз-ата.jpg" },
+        { title: "Узгенские памятники", desc: "Архитектурные шедевры X века", image: "images/узген-памятники .jpg" },
+        
+        { title: "Город Ош", desc: "Культурный центр с рынками и историей", image: "images/город-ош.jpg" }
+      ],
+      "talas": [
+        { title: "Город Талас", desc: "Исторический центр с древними памятниками", image: "images/город-талас.jpg" },
+        { title: "Озеро Беш-Таш", desc: "Высокогорное озеро с живописными пейзажами для отдыха", image: "images/озеро-бешташ.jpg" },
+        { title: "Мавзолей Манаса Ордо", desc: "Святилище легендарного героя", image: "images/manas-ordo.jpg" },
+        { title: "Курганы Таласа", desc: "Древние захоронения киргизских вождей", image: "images/курганы-таласа.jpg" },
+        { title: "Ущелье Киртманак", desc: "Живописное ущелье для треккинга", image: "images/ущелье-киртманак.jpg" },
+        { title: "Конные фестивали", desc: "Традиционные спортивные соревнования", image: "images/horse-games-festival.jpg" },
+       
+      ],
+      "chui": [
+        { title: "Ущелье Ала-Арча", desc: "Популярное место с горами и реками ", image: "images/ala-archa.jpg" },
+        { title: "Кегитинское ущелье", desc: "природа,водопады и свежий воздух", image: "images/кегитинское-ущелье.jpg" },
+        { title: "Озеро Коль-Тор", desc: "Горное озеро с прозрачной водой", image: "images/коль-тор.jpg" },
+        { title: "Парк Ала-Арча", desc: "Национальный парк с драматичными ущельями", image: "images/ala-archa.jpg" },
+        { title: "Башня Бурана", desc: "Древний минарет и музей под открытым небом", image: "images/Burana.jpg" },
+        { title: "Долина Чон-Кемин", desc: "Эко-туризм в дикой природе", image: "images/chon-kemin.jpg" },
+        { title: "Ботанический заповедник", desc: "Редкие растения Киргизии", image: "images/ботонический-заповедник.jpg" },
+        { title: "Город Бишкек", desc: "Столица с культурой и историей", image: "images/gorod-bishkek.jpg" }
+      ],
+        "batken": [
+          { title: "Горы Ляйляк", desc: "Уникальный горный массив с богатой флорой", image: "images/горы-ляйляк.jpg" },
+          { title: "Ущелье Каравшин", desc: "Одно из самых красивых горных ущелий Кыргызстана. Здесь высокие скалы, чистые реки и отличные маршруты для альпинизма и треккинга. Это место называют «азиатской Патагонией».", image: "images/ущелье-каравшин.jpg" },
+          { title: "Пещера Кан-и-Гут", desc: "Одна из самых известных пещер Центральной Азии. Туристов привлекают длинные подземные проходы и древняя история этого места.", image: "images/Kan-i-Gut.jpg" },
+          { title: "Памятник Айгуль", desc: "Скульптура в честь легендарной героини", image: "images/айгул.jpg" },
+          { title: "Саркентский национальный парк", desc: "Большой природный парк с лесами, горами и редкими животными. Отличное место для экотуризма, походов и отдыха на природе", image: "images/саркенский-парк.jpg" },
+          { title: "Город Кадамжай", desc: "Центр добычи и обработки камня", image: "images/город-кадамжай.jpg" },
+          { title: "Пещера Шахимардан", desc: "Мистическое место с древними рисунками", image: "images/Shahimardan.jpg" },
+          { title: "Озеро Ай-Куль", desc: "Высокогорное озеро с чистой водой и красивой природой. Отличное место для отдыха и фотографий.", image: "images/озер-ай-куль.jpg" }
+        ],
+        "jalal-abad": [
+            { title: "Арсланбоб", desc: "Священный лес грецкого ореха.Главная гордость региона — крупнейший в мире реликтовый орехово-плодовый лес. Туристы приезжают сюда ради пеших и конных прогулок, посещения Большого и Малого водопадов, а также ради панорамных видов на священную гору Бабаш-Ата. Здесь развита сеть этно-гостевых домов, где можно погрузиться в местный быт.", image: "images/arslanbob.jpg" },
+            { title: "Озеро Сары-Челек", desc: "Красивое горное озеро с прозрачной водой и окружающими лесами", image: "images/сары-челек.jpg" },
+            { title: "Город Манас", desc: "Культурный центр с рынками и историей", image: "images/manas.jpg" },
+            { title: "Пещера Чункурчак", desc: "Уникальная пещера с подземными реками и сталактитами", image: "images/чункурчак.jpg" },
+            { title: "Озеро Кара-Суу", desc: ". Скрытая жемчужина в горах Ферганского хребта для любителей дикой природы. В отличие от Сары-Челек, здесь гораздо меньше людей. Озеро зажато между скалами, окружено березовыми рощами и идеально подходит для многодневных походов с палатками и треккинга.", image: "images/кара-суу.jpg" },
+            { title: "Токтогульское водохранилище", desc: ". Крупнейший искусственный водоем в Центральной Азии с бирюзовой водой, окруженный горами. Летом здесь популярны пляжный отдых, катание на катерах, гидроциклах и отличная рыбалка. Вокруг озера постепенно развивается туристическая инфраструктура с гостевыми домами и зонами отдыха.", image: "images/токтогул.jpg" }
+          ]
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const regionId = sessionStorage.getItem('selectedRegion');
+      const region = regions.find(r => r.id === regionId);
+
+      if (!region) {
+        window.location.href = 'regions.html';
+        return;
+      }
+
+      // Установить герой
+      const hero = document.getElementById('regionHero');
+      hero.style.backgroundImage = `url('${region.image}')`;
+      hero.innerHTML += `
+        <div class="region-hero-content">
+          <h1>${region.name}</h1>
+          <p>${region.fullDesc}</p>
+        </div>
+      `;
+
+      // Отобразить достопримечательности
+      const list = document.getElementById('attractionsList');
+      const attractions = regionAttractions[regionId] || [];
+      attractions.forEach(attr => {
+        const div = document.createElement('div');
+        div.className = 'attraction-item';
+        const img = attr.image;div.innerHTML = `<img src='${img}' alt='${attr.title}'><h3>${attr.title}</h3><p>${attr.desc}</p>`;div.onclick=()=>{sessionStorage.setItem('selectedAttraction',JSON.stringify({title:attr.title,desc:attr.desc,image:img,history:'Красивое туристическое место Кыргызстана.',tips:'Лучшее время для посещения — лето и осень.'}));window.location.href='attraction-detail.html';};list.appendChild(div);
+      });
+
+      // Показать кнопку создания поездки только если авторизован
+      const btn = document.getElementById('createTripBtn');
+      if (!Auth.isLoggedIn()) {
+        btn.textContent = 'Войдите, чтобы создать поездку';
+        btn.onclick = () => showAuthModal('login');
+      }
+
+      const tripsLink = document.getElementById('tripsLink');
+      if (Auth.isLoggedIn()) {
+        tripsLink.style.display = 'inline-block';
+      }
+    });
+
+    function createTrip() {
+      if (!Auth.isLoggedIn()) {
+        showAuthModal('login');
+        return;
+      }
+
+      const regionId = sessionStorage.getItem('selectedRegion');
+      const region = regions.find(r => r.id === regionId);
+
+      const tripName = prompt('Введите название вашей поездки:');
+      if (!tripName) return;
+
+      const trip = {
+        id: Date.now(),
+        name: tripName,
+        region: region.name,
+        regionId: regionId,
+        date: new Date().toLocaleDateString('ru-RU'),
+        status: 'планируется'
+      };
+
+      Auth.addTrip(trip);
+      alert(`Поездка "${tripName}" создана!`);
+      window.location.href = 'trips.html';
+    }
+  </script>
+</body>
+</html>
