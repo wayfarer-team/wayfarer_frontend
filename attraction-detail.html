@@ -7,6 +7,55 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
+
+  .nav-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+
+  .navbar {
+    background: var(--dark);
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(200,151,42,0.3);
+  }
+
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: var(--gold);
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
     .attraction-hero {
       position: relative;
       height: 60vh;
@@ -604,5 +653,4 @@
   </script>
 <script>document.addEventListener("DOMContentLoaded",()=>{const data=JSON.parse(sessionStorage.getItem("selectedAttraction")||'null');if(data){document.querySelector('.attraction-hero').style.backgroundImage=`url(${data.image})`;document.querySelector('.attraction-hero-content').innerHTML=`<div class="attraction-hero-tag">ДОСТОПРИМЕЧАТЕЛЬНОСТЬ</div><h1 class="attraction-hero-title">${data.title}</h1><div class="attraction-hero-divider"></div><p class="attraction-hero-desc">${data.desc}</p>`;document.querySelector('.attraction-content').innerHTML=`<h2 class='section-title'>Описание</h2><p class='section-text'>${data.history}</p><div class='info-cards'><div class='info-card'><div class='info-card-icon'>📍</div><div class='info-card-value'>Кыргызстан</div></div><div class='info-card'><div class='info-card-icon'>⭐</div><div class='info-card-value'>Популярное место</div></div></div><h2 class='section-title'>Советы туристам</h2><p class='section-text'>${data.tips}</p><div class='gallery-grid'><div class='gallery-item' style="background-image:url(${data.image})"></div><div class='gallery-item' style="background-image:url(${data.image})"></div></div>`;}})</script></body>
 <script src="script.js"></script>
-<script>document.addEventListener("DOMContentLoaded",()=>{const data=JSON.parse(sessionStorage.getItem("selectedAttraction")||'null');if(data){document.querySelector('.attraction-hero').style.backgroundImage=`url(${data.image})`;document.querySelector('.attraction-hero-content').innerHTML=`<div class="attraction-hero-tag">ДОСТОПРИМЕЧАТЕЛЬНОСТЬ</div><h1 class="attraction-hero-title">${data.title}</h1><div class="attraction-hero-divider"></div><p class="attraction-hero-desc">${data.desc}</p>`;document.querySelector('.attraction-content').innerHTML=`<h2 class='section-title'>Описание</h2><p class='section-text'>${data.history}</p><div class='info-cards'><div class='info-card'><div class='info-card-icon'>📍</div><div class='info-card-value'>Кыргызстан</div></div><div class='info-card'><div class='info-card-icon'>⭐</div><div class='info-card-value'>Популярное место</div></div></div><h2 class='section-title'>Советы туристам</h2><p class='section-text'>${data.tips}</p><div class='gallery-grid'><div class='gallery-item' style="background-image:url(${data.image})"></div><div class='gallery-item' style="background-image:url(${data.image})"></div></div>`;}})</script></body>
 </html>
