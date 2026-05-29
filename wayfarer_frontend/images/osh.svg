@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
-  <rect width="1200" height="800" fill="#daa520"/>
-  <polygon points="600,100 800,400 400,400" fill="#8b4513" opacity="0.8"/>
-  <polygon points="600,150 750,400 450,400" fill="#cd853f" opacity="0.6"/>
-  <rect x="350" y="400" width="500" height="300" fill="#228b22" opacity="0.7"/>
-  <text x="600" y="400" font-size="80" text-anchor="middle" fill="white" font-weight="bold">🕌</text>
-  <text x="600" y="500" font-size="40" text-anchor="middle" fill="white">Ош</text>
-</svg>
