@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#87ceeb"/>
+  <polygon points="300,300 600,100 900,300 850,700 350,700" fill="#228b22" opacity="0.7"/>
+  <polygon points="200,400 500,200 800,400" fill="#32cd32" opacity="0.5"/>
+  <text x="600" y="400" font-size="80" text-anchor="middle" fill="white" font-weight="bold">🌲</text>
+  <text x="600" y="500" font-size="40" text-anchor="middle" fill="white">Долина Чуй</text>
+</svg>
