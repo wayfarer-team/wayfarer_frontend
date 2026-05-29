@@ -1,145 +1,203 @@
-// Система регистрации и авторизации
+// ========================================
+// ПРОСТАЯ РАБОЧАЯ ВЕРСИЯ AUTH.JS
+// ========================================
+
+// Получаем URL из config.js
+const API_URL = window.API_URL || 'https://wayfarer-backend-ya6l.onrender.com';
+
+// Система авторизации
 const Auth = {
-  users: JSON.parse(localStorage.getItem('wayfarer_users')) || {},
-  currentUser: JSON.parse(localStorage.getItem('wayfarer_current_user')) || null,
+    user: JSON.parse(localStorage.getItem('wayfarer_user')) || null,
 
-  register(email, password, name) {
-    if (this.users[email]) return { success: false, message: 'Пользователь уже существует' };
-    this.users[email] = { password, name, trips: [] };
-    localStorage.setItem('wayfarer_users', JSON.stringify(this.users));
-    return { success: true, message: 'Успешно зарегистрирован' };
-  },
+    // Регистрация
+    async register(name, email, password) {
+        console.log('🟢 Регистрация:', { name, email });
+        
+        try {
+            const response = await fetch(`${API_URL}/api/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: name,
+                    email: email,
+                    password: password
+                })
+            });
+            
+            console.log('🟢 Статус ответа:', response.status);
+            const data = await response.json();
+            console.log('🟢 Ответ сервера:', data);
+            
+            if (response.ok && data.id) {
+                this.user = {
+                    id: data.id,
+                    name: name,
+                    email: email
+                };
+                localStorage.setItem('wayfarer_user', JSON.stringify(this.user));
+                return { success: true, message: 'Регистрация успешна!' };
+            } else {
+                return { success: false, message: data.error || 'Ошибка регистрации' };
+            }
+        } catch (error) {
+            console.error('🔴 Ошибка регистрации:', error);
+            return { success: false, message: 'Сервер недоступен: ' + error.message };
+        }
+    },
 
-  login(email, password) {
-    const user = this.users[email];
-    if (!user || user.password !== password) {
-      return { success: false, message: 'Неверный email или пароль' };
+    // Вход
+    async login(email, password) {
+        console.log('🟢 Вход:', { email });
+        
+        try {
+            const response = await fetch(`${API_URL}/api/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            
+            console.log('🟢 Статус ответа:', response.status);
+            const data = await response.json();
+            console.log('🟢 Ответ сервера:', data);
+            
+            if (response.ok && data.id) {
+                this.user = {
+                    id: data.id,
+                    name: data.username || data.name,
+                    email: email
+                };
+                localStorage.setItem('wayfarer_user', JSON.stringify(this.user));
+                return { success: true, message: 'Добро пожаловать!' };
+            } else {
+                return { success: false, message: data.error || 'Неверный email или пароль' };
+            }
+        } catch (error) {
+            console.error('🔴 Ошибка входа:', error);
+            return { success: false, message: 'Сервер недоступен' };
+        }
+    },
+
+    logout() {
+        this.user = null;
+        localStorage.removeItem('wayfarer_user');
+        location.reload();
+    },
+
+    isLoggedIn() {
+        return this.user !== null;
+    },
+
+    getCurrentUser() {
+        return this.user;
     }
-    this.currentUser = { email, name: user.name, trips: user.trips };
-    localStorage.setItem('wayfarer_current_user', JSON.stringify(this.currentUser));
-    return { success: true, message: 'Успешно вошли' };
-  },
-
-  logout() {
-    this.currentUser = null;
-    localStorage.removeItem('wayfarer_current_user');
-  },
-
-  isLoggedIn() {
-    return this.currentUser !== null;
-  },
-
-  getCurrentUser() {
-    return this.currentUser;
-  },
-
-  addTrip(trip) {
-    if (!this.currentUser) return false;
-    const email = this.currentUser.email;
-    this.users[email].trips.push(trip);
-    this.currentUser.trips.push(trip);
-    localStorage.setItem('wayfarer_users', JSON.stringify(this.users));
-    localStorage.setItem('wayfarer_current_user', JSON.stringify(this.currentUser));
-    return true;
-  },
-
-  getTrips() {
-    return this.currentUser?.trips || [];
-  }
 };
 
-function showAuthModal(type = 'login') {
-  const html = `
-    <div class="auth-modal-overlay" id="authModalOverlay" onclick="closeAuthModal()">
-      <div class="auth-modal" onclick="event.stopPropagation()">
-        <button class="modal-close" onclick="closeAuthModal()">✕</button>
-        <div id="authContainer">
-          ${type === 'login' ? getLoginForm() : getRegisterForm()}
+// Обновление UI
+function updateAuthUI() {
+    const btn = document.getElementById('authBtn');
+    if (!btn) return;
+    
+    if (Auth.isLoggedIn()) {
+        btn.innerHTML = `
+            <div style="display:flex;align-items:center;gap:10px">
+                <span style="color:#e8c06a">👤 ${Auth.user.name}</span>
+                <button onclick="Auth.logout()" style="background:#c0182a;border:none;padding:5px 12px;color:white;cursor:pointer;border-radius:5px">Выход</button>
+            </div>
+        `;
+        const tripsLink = document.getElementById('tripsLink');
+        if (tripsLink) tripsLink.style.display = 'inline-block';
+    } else {
+        btn.innerHTML = `<button onclick="showAuthModal()" style="background:#c0182a;border:none;padding:8px 20px;color:white;cursor:pointer;border-radius:20px">Вход / Регистрация</button>`;
+    }
+}
+
+// Модальное окно
+function showAuthModal() {
+    const modal = document.createElement('div');
+    modal.id = 'authModal';
+    modal.style.cssText = `
+        position:fixed;top:0;left:0;width:100%;height:100%;
+        background:rgba(0,0,0,0.8);display:flex;align-items:center;
+        justify-content:center;z-index:1000
+    `;
+    modal.innerHTML = `
+        <div style="background:#f5efe2;padding:30px;width:380px;border-radius:16px;border-top:4px solid #c0182a">
+            <h2 style="margin-bottom:20px;color:#2d1a0e">Вход / Регистрация</h2>
+            <div id="modalContent">
+                ${getLoginForm()}
+            </div>
         </div>
-      </div>
-    </div>
-  `;
-  document.body.insertAdjacentHTML('beforeend', html);
+    `;
+    modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+    document.body.appendChild(modal);
 }
 
 function getLoginForm() {
-  return `
-    <h2>Вход</h2>
-    <form onsubmit="handleLogin(event)">
-      <input type="email" id="loginEmail" placeholder="Email" required>
-      <input type="password" id="loginPassword" placeholder="Пароль" required>
-      <button type="submit" class="btn-auth">Войти</button>
-      <p style="text-align: center; margin-top: 1rem;">
-        Нет аккаунта? <a href="#" onclick="switchAuthForm(event, 'register')" style="color: var(--gold); cursor: pointer;">Зарегистрироваться</a>
-      </p>
-    </form>
-  `;
+    return `
+        <form onsubmit="handleLogin(event)">
+            <input type="email" id="email" placeholder="Email" required style="width:100%;padding:12px;margin-bottom:15px;border-radius:8px;border:1px solid #d4b16a">
+            <input type="password" id="password" placeholder="Пароль" required style="width:100%;padding:12px;margin-bottom:15px;border-radius:8px;border:1px solid #d4b16a">
+            <button type="submit" style="width:100%;padding:12px;background:#8b1e2d;color:white;border:none;border-radius:8px;cursor:pointer">Войти</button>
+            <p style="text-align:center;margin-top:15px">Нет аккаунта? <a href="#" onclick="switchToRegister(event)" style="color:#c8972a">Регистрация</a></p>
+        </form>
+    `;
 }
 
 function getRegisterForm() {
-  return `
-    <h2>Регистрация</h2>
-    <form onsubmit="handleRegister(event)">
-      <input type="text" id="regName" placeholder="Ваше имя" required>
-      <input type="email" id="regEmail" placeholder="Email" required>
-      <input type="password" id="regPassword" placeholder="Пароль" required>
-      <button type="submit" class="btn-auth">Зарегистрироваться</button>
-      <p style="text-align: center; margin-top: 1rem;">
-        Уже есть аккаунт? <a href="#" onclick="switchAuthForm(event, 'login')" style="color: var(--gold); cursor: pointer;">Войти</a>
-      </p>
-    </form>
-  `;
+    return `
+        <form onsubmit="handleRegister(event)">
+            <input type="text" id="name" placeholder="Имя" required style="width:100%;padding:12px;margin-bottom:15px;border-radius:8px;border:1px solid #d4b16a">
+            <input type="email" id="email" placeholder="Email" required style="width:100%;padding:12px;margin-bottom:15px;border-radius:8px;border:1px solid #d4b16a">
+            <input type="password" id="password" placeholder="Пароль" required style="width:100%;padding:12px;margin-bottom:15px;border-radius:8px;border:1px solid #d4b16a">
+            <button type="submit" style="width:100%;padding:12px;background:#8b1e2d;color:white;border:none;border-radius:8px;cursor:pointer">Зарегистрироваться</button>
+            <p style="text-align:center;margin-top:15px">Уже есть аккаунт? <a href="#" onclick="switchToLogin(event)" style="color:#c8972a">Войти</a></p>
+        </form>
+    `;
 }
 
-function switchAuthForm(e, type) {
-  e.preventDefault();
-  document.getElementById('authContainer').innerHTML = type === 'login' ? getLoginForm() : getRegisterForm();
+async function handleLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const result = await Auth.login(email, password);
+    alert(result.message);
+    if (result.success) {
+        document.getElementById('authModal')?.remove();
+        updateAuthUI();
+        location.href = 'attractions.html';
+    }
 }
 
-function handleLogin(e) {
-  e.preventDefault();
-  const email = document.getElementById('loginEmail').value;
-  const password = document.getElementById('loginPassword').value;
-  const result = Auth.login(email, password);
-  alert(result.message);
-  if (result.success) {
-    closeAuthModal();
-    location.reload();
-  }
+async function handleRegister(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const result = await Auth.register(name, email, password);
+    alert(result.message);
+    if (result.success) {
+        document.getElementById('modalContent').innerHTML = getLoginForm();
+    }
 }
 
-function handleRegister(e) {
-  e.preventDefault();
-  const name = document.getElementById('regName').value;
-  const email = document.getElementById('regEmail').value;
-  const password = document.getElementById('regPassword').value;
-  const result = Auth.register(email, password, name);
-  alert(result.message);
-  if (result.success) {
-    document.getElementById('authContainer').innerHTML = getLoginForm();
-  }
+function switchToRegister(e) {
+    e.preventDefault();
+    document.getElementById('modalContent').innerHTML = getRegisterForm();
 }
 
-function closeAuthModal() {
-  const overlay = document.getElementById('authModalOverlay');
-  if (overlay) overlay.remove();
+function switchToLogin(e) {
+    e.preventDefault();
+    document.getElementById('modalContent').innerHTML = getLoginForm();
 }
 
-function updateAuthUI() {
-  const authBtn = document.getElementById('authBtn');
-  if (!authBtn) return;
+// Экспорт глобальных функций
+window.Auth = Auth;
+window.updateAuthUI = updateAuthUI;
+window.showAuthModal = showAuthModal;
+window.handleLogin = handleLogin;
+window.handleRegister = handleRegister;
+window.switchToRegister = switchToRegister;
+window.switchToLogin = switchToLogin;
 
-  if (Auth.isLoggedIn()) {
-    const user = Auth.getCurrentUser();
-    authBtn.innerHTML = `${user.name} <button class="logout-btn" onclick="handleLogout()">Выход</button>`;
-  } else {
-    authBtn.innerHTML = '<a href="register.html" style="color: var(--white); text-decoration: none;"><button class="login-btn" style="cursor: pointer;">Вход</button></a>';
-  }
-}
-
-function handleLogout() {
-  Auth.logout();
-  location.reload();
-}
-
+// Запуск при загрузке
 document.addEventListener('DOMContentLoaded', updateAuthUI);

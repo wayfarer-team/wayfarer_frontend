@@ -231,6 +231,24 @@
       margin: 3rem 0;
     }
 
+
+.card{
+    width: 300px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.attraction img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+
+
     @media (max-width: 768px) {
       .attraction-hero {
         height: 40vh;
@@ -587,5 +605,7 @@
     // Загрузка при готовности DOM
     document.addEventListener('DOMContentLoaded', loadAttraction);
   </script>
-</body>
+<script>document.addEventListener("DOMContentLoaded",()=>{const data=JSON.parse(sessionStorage.getItem("selectedAttraction")||'null');if(data){document.querySelector('.attraction-hero').style.backgroundImage=`url(${data.image})`;document.querySelector('.attraction-hero-content').innerHTML=`<div class="attraction-hero-tag">ДОСТОПРИМЕЧАТЕЛЬНОСТЬ</div><h1 class="attraction-hero-title">${data.title}</h1><div class="attraction-hero-divider"></div><p class="attraction-hero-desc">${data.desc}</p>`;document.querySelector('.attraction-content').innerHTML=`<h2 class='section-title'>Описание</h2><p class='section-text'>${data.history}</p><div class='info-cards'><div class='info-card'><div class='info-card-icon'>📍</div><div class='info-card-value'>Кыргызстан</div></div><div class='info-card'><div class='info-card-icon'>⭐</div><div class='info-card-value'>Популярное место</div></div></div><h2 class='section-title'>Советы туристам</h2><p class='section-text'>${data.tips}</p><div class='gallery-grid'><div class='gallery-item' style="background-image:url(${data.image})"></div><div class='gallery-item' style="background-image:url(${data.image})"></div></div>`;}})</script></body>
+<script src="script.js"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>{const data=JSON.parse(sessionStorage.getItem("selectedAttraction")||'null');if(data){document.querySelector('.attraction-hero').style.backgroundImage=`url(${data.image})`;document.querySelector('.attraction-hero-content').innerHTML=`<div class="attraction-hero-tag">ДОСТОПРИМЕЧАТЕЛЬНОСТЬ</div><h1 class="attraction-hero-title">${data.title}</h1><div class="attraction-hero-divider"></div><p class="attraction-hero-desc">${data.desc}</p>`;document.querySelector('.attraction-content').innerHTML=`<h2 class='section-title'>Описание</h2><p class='section-text'>${data.history}</p><div class='info-cards'><div class='info-card'><div class='info-card-icon'>📍</div><div class='info-card-value'>Кыргызстан</div></div><div class='info-card'><div class='info-card-icon'>⭐</div><div class='info-card-value'>Популярное место</div></div></div><h2 class='section-title'>Советы туристам</h2><p class='section-text'>${data.tips}</p><div class='gallery-grid'><div class='gallery-item' style="background-image:url(${data.image})"></div><div class='gallery-item' style="background-image:url(${data.image})"></div></div>`;}})</script></body>
 </html>

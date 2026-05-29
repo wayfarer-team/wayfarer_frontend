@@ -335,102 +335,327 @@
     </div>
   </div>
 
-  <script src="auth.js"></script>
-  <script>
-    function switchToRegister(e) {
-      e.preventDefault();
-      document.getElementById('loginForm').style.display = 'none';
-      document.getElementById('registerForm').style.display = 'block';
-      clearErrors();
+  
+<script src="auth.js"></script>
+
+<script>
+
+    function switchToRegister(e){
+
+        e.preventDefault();
+
+        document.getElementById(
+            'loginForm'
+        ).style.display = 'none';
+
+        document.getElementById(
+            'registerForm'
+        ).style.display = 'block';
+
+        clearErrors();
+
     }
 
-    function switchToLogin(e) {
-      e.preventDefault();
-      document.getElementById('registerForm').style.display = 'none';
-      document.getElementById('loginForm').style.display = 'block';
-      clearErrors();
+
+
+    function switchToLogin(e){
+
+        e.preventDefault();
+
+        document.getElementById(
+            'registerForm'
+        ).style.display = 'none';
+
+        document.getElementById(
+            'loginForm'
+        ).style.display = 'block';
+
+        clearErrors();
+
     }
 
-    function clearErrors() {
-      document.getElementById('loginError').classList.remove('show');
-      document.getElementById('loginSuccess').classList.remove('show');
-      document.getElementById('registerError').classList.remove('show');
-      document.getElementById('registerSuccess').classList.remove('show');
+
+
+    function clearErrors(){
+
+        document
+        .getElementById('loginError')
+        .classList.remove('show');
+
+        document
+        .getElementById('loginSuccess')
+        .classList.remove('show');
+
+        document
+        .getElementById('registerError')
+        .classList.remove('show');
+
+        document
+        .getElementById('registerSuccess')
+        .classList.remove('show');
+
     }
 
-    function showError(elementId, message) {
-      const element = document.getElementById(elementId);
-      element.textContent = message;
-      element.classList.add('show');
-      setTimeout(() => element.classList.remove('show'), 5000);
-    }
 
-    function showSuccess(elementId, message) {
-      const element = document.getElementById(elementId);
-      element.textContent = message;
-      element.classList.add('show');
-    }
 
-    function handleLogin(e) {
-      e.preventDefault();
-      clearErrors();
+    function showError(elementId,message){
 
-      const email = document.getElementById('loginEmail').value;
-      const password = document.getElementById('loginPassword').value;
+        const element =
+            document.getElementById(
+                elementId
+            );
 
-      const result = Auth.login(email, password);
+        element.textContent =
+            message;
 
-      if (result.success) {
-        showSuccess('loginSuccess', '✓ Успешно вошли! Перенаправление...');
-        setTimeout(() => {
-          window.location.href = 'index.html';
-        }, 1500);
-      } else {
-        showError('loginError', '✗ ' + result.message);
-      }
-    }
-
-    function handleRegister(e) {
-      e.preventDefault();
-      clearErrors();
-
-      const name = document.getElementById('regName').value;
-      const email = document.getElementById('regEmail').value;
-      const password = document.getElementById('regPassword').value;
-      const passwordConfirm = document.getElementById('regPasswordConfirm').value;
-
-      if (password !== passwordConfirm) {
-        showError('registerError', '✗ Пароли не совпадают');
-        return;
-      }
-
-      if (password.length < 6) {
-        showError('registerError', '✗ Пароль должен содержать минимум 6 символов');
-        return;
-      }
-
-      const result = Auth.register(email, password, name);
-
-      if (result.success) {
-        showSuccess('registerSuccess', '✓ ' + result.message);
-        document.getElementById('regName').value = '';
-        document.getElementById('regEmail').value = '';
-        document.getElementById('regPassword').value = '';
-        document.getElementById('regPasswordConfirm').value = '';
+        element.classList.add(
+            'show'
+        );
 
         setTimeout(() => {
-          switchToLogin(new Event('click'));
-          document.getElementById('loginEmail').value = email;
-        }, 2000);
-      } else {
-        showError('registerError', '✗ ' + result.message);
-      }
+
+            element.classList.remove(
+                'show'
+            );
+
+        },5000);
+
     }
 
-    // Если пользователь уже авторизован, перенаправить на главную
-    if (Auth.isLoggedIn()) {
-      window.location.href = 'index.html';
+
+
+    function showSuccess(elementId,message){
+
+        const element =
+            document.getElementById(
+                elementId
+            );
+
+        element.textContent =
+            message;
+
+        element.classList.add(
+            'show'
+        );
+
     }
-  </script>
+
+
+
+    // =========================
+    // LOGIN
+    // =========================
+
+    async function handleLogin(e){
+
+        e.preventDefault();
+
+        clearErrors();
+
+        const email =
+            document.getElementById(
+                'loginEmail'
+            ).value;
+
+        const password =
+            document.getElementById(
+                'loginPassword'
+            ).value;
+
+
+        // ВАЖНО await
+
+        const result =
+            await Auth.login(
+                email,
+                password
+            );
+
+
+        if(result.success){
+
+            showSuccess(
+
+                'loginSuccess',
+
+                '✓ Успешно вошли!'
+
+            );
+
+            setTimeout(() => {
+
+                window.location.href =
+                    'index.html';
+
+            },1500);
+
+        }else{
+
+            showError(
+
+                'loginError',
+
+                '✗ ' + result.message
+
+            );
+
+        }
+
+    }
+
+
+
+    // =========================
+    // REGISTER
+    // =========================
+
+    async function handleRegister(e){
+
+        e.preventDefault();
+
+        clearErrors();
+
+
+        const name =
+            document.getElementById(
+                'regName'
+            ).value;
+
+        const email =
+            document.getElementById(
+                'regEmail'
+            ).value;
+
+        const password =
+            document.getElementById(
+                'regPassword'
+            ).value;
+
+        const passwordConfirm =
+            document.getElementById(
+                'regPasswordConfirm'
+            ).value;
+
+
+
+        // ПРОВЕРКА
+
+        if(password !== passwordConfirm){
+
+            showError(
+
+                'registerError',
+
+                '✗ Пароли не совпадают'
+
+            );
+
+            return;
+
+        }
+
+
+
+        if(password.length < 6){
+
+            showError(
+
+                'registerError',
+
+                '✗ Минимум 6 символов'
+
+            );
+
+            return;
+
+        }
+
+
+
+        // ВАЖНО await
+
+        const result =
+            await Auth.register(
+                email,
+                password,
+                name
+            );
+
+
+
+        if(result.success){
+
+            showSuccess(
+
+                'registerSuccess',
+
+                '✓ ' + result.message
+
+            );
+
+
+
+            document.getElementById(
+                'regName'
+            ).value = '';
+
+            document.getElementById(
+                'regEmail'
+            ).value = '';
+
+            document.getElementById(
+                'regPassword'
+            ).value = '';
+
+            document.getElementById(
+                'regPasswordConfirm'
+            ).value = '';
+
+
+
+            setTimeout(() => {
+
+                switchToLogin(
+                    new Event('click')
+                );
+
+                document.getElementById(
+                    'loginEmail'
+                ).value = email;
+
+            },2000);
+
+        }else{
+
+            showError(
+
+                'registerError',
+
+                '✗ ' + result.message
+
+            );
+
+        }
+
+    }
+
+
+
+    // =========================
+    // REDIRECT
+    // =========================
+
+    if(Auth.isLoggedIn()){
+
+        window.location.href =
+            'index.html';
+
+    }
+
+</script>
+
+<script src="script.js"></script>
+```
+
 </body>
 </html>
