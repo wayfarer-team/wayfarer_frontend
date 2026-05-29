@@ -1,34 +1,68 @@
-const API_URL =
-  "https://wayfarer-backend-ya6l.onrender.com";
+const API_URL = "https://wayfarer-backend-ya6l.onrender.com";
 
-async function request(url) {
-
+async function request(url, options = {}) {
   try {
-
-    const response = await fetch(`${API_URL}${url}`);
+    const response = await fetch(`${API_URL}${url}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      ...options,
+    });
 
     return await response.json();
+  } catch (error) {
+    console.error("API ERROR:", error);
 
-  } catch(error) {
-
-    console.error(error);
-
-    return [];
-
+    return {
+      success: false,
+      message: "Ошибка сервера",
+    };
   }
-
 }
 
 export function getTrips() {
-  return request(`${API_URL}/api/trips`);
+  return request("/api/trips");
+}
+
+export function createTrip(data) {
+  return request("/api/trips", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+}
+
+export function updateTrip(id, data) {
+  return request(`/api/trips${id}`, {
+    method: "PATCH",
+    body: JSON.stringify(data),
+  });
+}
+
+export function getPlaces() {
+  return request("/api/places");
+}
+
+export function getEvents() {
+  return request("/api/events");
+}
+
+export function createEvent(data) {
+  return request("/api/events", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+}
+
+export function deleteEvent(id) {
+  return request(`/api/events${id}`, {
+    method: "DELETE",
+  });
 }
 
 export function getRegions() {
-  return request(`${API_URL}/regions`);
+  return request("/regions");
 }
 
-export function getAttractions(region) {
-  return request(
-    `${API_URL}/attractions/${region}`
-  );
+export function getAttractions() {
+  return request("/attractions");
 }
