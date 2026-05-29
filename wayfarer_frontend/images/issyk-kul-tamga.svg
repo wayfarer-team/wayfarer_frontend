@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+  <rect width="1000" height="700" fill="#1e90ff"/>
+  <rect x="200" y="400" width="600" height="200" fill="#d4b5a0" opacity="0.7"/>
+  <circle cx="500" cy="450" r="50" fill="#ffd700" opacity="0.8"/>
+  <circle cx="400" cy="480" r="40" fill="#ffa500" opacity="0.6"/>
+  <circle cx="600" cy="490" r="35" fill="#ff8c00" opacity="0.6"/>
+  <text x="500" y="650" font-size="40" fill="white" text-anchor="middle">♨️ Горячие источники</text>
+</svg>

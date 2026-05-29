@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Живая культура — Wayfarer KG</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="ornament-small">✦</span> WAYFARER KG
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="regions.html">Регионы</a></li>
+      <li><a href="attractions.html">Достопримечательности</a></li>
+      <li><a href="culture.html">Культура</a></li>
+      <li><a href="plan.html">Спланируйте поездку</a></li>
+      <li><a href="trips.html" id="tripsLink" style="display:none;">Мои поездки</a></li>
+    </ul>
+    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+    <div id="authBtn"></div>
+  </nav>
+
+  <!-- CULTURE -->
+  <section class="culture-section" id="culture" style="padding-top: 100px;">
+    <div class="culture-inner">
+      <div class="culture-text">
+        <div class="ornament-line"></div>
+        <h2>Живая культура</h2>
+        <p>Кыргызский народ — наследник одной из древнейших кочевых цивилизаций. Национальный эпос <em>Манас</em> — декламируемый более тысячи лет — длиннее «Илиады» и «Одиссеи» вместе взятых.</p>
+        <p>От плетения юрт и войлоковаления до соколиной охоты и конных игр, традиции степи ярко дышат в настоящее время.</p>
+        <ul class="culture-list">
+          <li><span>✦</span> Соколиная охота (Беркутчи)</li>
+          <li><span>✦</span> Кокбору — традиционная конная игра</li>
+          <li><span>✦</span> Шырдак — священное искусство войлочного ковра</li>
+          <li><span>✦</span> Жизнь в юрте и гостеприимство (Ак Калпак)</li>
+          <li><span>✦</span> Великий эпос Манас</li>
+        </ul>
+        <a href="plan.html" class="btn-secondary">Спланировать культурный тур</a>
+      </div>
+      <div class="culture-image-stack">
+        <div class="culture-img culture-img-1" style="background-image:url('images/culture1.jpg')">
+          <div class="culture-img-label">Фестиваль соколиной охоты</div>
+        </div>
+        <div class="culture-img culture-img-2" style="background-image:url('images/culture2.jpg')">
+          <div class="culture-img-label">Традиционная юрта</div>
+        </div>
+        <div class="ornament-corner"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-ornament">
+      <svg viewBox="0 0 400 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 Q50,5 100,30 T200,30 T300,30 T400,30" stroke="#c8972a" stroke-width="1.5" fill="none" opacity="0.6"/>
+        <circle cx="200" cy="30" r="5" fill="#c8972a" opacity="0.8"/>
+        <circle cx="100" cy="30" r="3" fill="#c8972a" opacity="0.5"/>
+        <circle cx="300" cy="30" r="3" fill="#c8972a" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="footer-logo">WAYFARER KG</div>
+    <p class="footer-tagline">Самая красивая страна в мире — нетронутая, незабываемая.</p>
+    <p class="footer-copy">© 2025 Wayfarer KG. Все права защищены.</p>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tripsLink = document.getElementById('tripsLink');
+      if (Auth.isLoggedIn()) {
+        tripsLink.style.display = 'inline-block';
+      }
+    });
+  </script>
+</body>
+</html>
