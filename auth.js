@@ -2,6 +2,8 @@
 // ПРОСТАЯ РАБОЧАЯ ВЕРСИЯ AUTH.JS
 // ========================================
 
+// проверка
+
 // Получаем URL из config.js
 const API_URL = window.API_URL || 'https://wayfarer-backend-ya6l.onrender.com';
 
