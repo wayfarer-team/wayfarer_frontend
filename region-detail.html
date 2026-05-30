@@ -237,14 +237,23 @@
           ]
     };
 
+    
     document.addEventListener('DOMContentLoaded', () => {
       const regionId = sessionStorage.getItem('selectedRegion');
       const region = regions.find(r => r.id === regionId);
 
-      if (!region) {
-        window.location.href = 'regions.html';
-        return;
-      }
+      
+    //  div.onclick = () => {
+    //   sessionStorage.setItem('selectedAttraction', JSON.stringify({
+    //     title: attr.title,
+    //     desc: attr.desc,
+    //     image: attr.image,
+    //     history: 'Красивое туристическое место Кыргызстана.',
+    //     tips: 'Лучшее время для посещения — лето и осень.'
+    //   }));
+    //   window.location.href = 'attraction-detail.html';
+    // };  
+    
 
       // Установить герой
       const hero = document.getElementById('regionHero');
@@ -262,7 +271,9 @@
       attractions.forEach(attr => {
         const div = document.createElement('div');
         div.className = 'attraction-item';
-        const img = attr.image;div.innerHTML = `<img src='${img}' alt='${attr.title}'><h3>${attr.title}</h3><p>${attr.desc}</p>`;div.onclick=()=>{sessionStorage.setItem('selectedAttraction',JSON.stringify({title:attr.title,desc:attr.desc,image:img,history:'Красивое туристическое место Кыргызстана.',tips:'Лучшее время для посещения — лето и осень.'}));window.location.href='attraction-detail.html';};list.appendChild(div);
+        const img = attr.image;div.innerHTML = `<img src='${img}' alt='${attr.title}'><h3>${attr.title}</h3><p>${attr.desc}</p>`;
+        div.onclick=()=>{sessionStorage.setItem('selectedAttraction',JSON.stringify({title:attr.title,desc:attr.desc,image:img,history:'Красивое туристическое место Кыргызстана.',tips:'Лучшее время для посещения — лето и осень.'}));
+        window.location.href='attraction-detail.html';};list.appendChild(div);
       });
 
       // Показать кнопку создания поездки только если авторизован
@@ -283,6 +294,7 @@
         showAuthModal('login');
         return;
       }
+      
 
       const regionId = sessionStorage.getItem('selectedRegion');
       const region = regions.find(r => r.id === regionId);
