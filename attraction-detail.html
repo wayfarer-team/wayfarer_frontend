@@ -416,8 +416,7 @@
     <p>&copy; 2024 Wayfarer KG. Откройте красоту Киргизии. 🏔️</p>
   </footer>
 
-  <script src="script.js"></script>
-  <script src="auth.js"></script>
+ 
   <script>
     const attractions = [
       {
@@ -594,6 +593,78 @@
       }
     ];
 
+function loadAttractionDetail() {
+    const storedData = sessionStorage.getItem('selectedAttraction');
+    
+    if (!storedData) {
+      window.location.href = 'attractions.html';
+      return;
+    }
+
+    let attractionData = null;
+
+    // Пытаемся определить тип данных
+    try {
+      const parsed = JSON.parse(storedData);
+      
+      // Если это объект с title (из region-detail.html)
+      if (parsed && typeof parsed === 'object' && parsed.title) {
+        attractionData = parsed;
+      }
+      // Если это строка ID (из attraction.html)
+      else if (typeof parsed === 'string' || !parsed.title) {
+        const id = typeof parsed === 'string' ? parsed : storedData;
+        attractionData = attractions.find(a => a.id === id);
+      }
+    } catch (e) {
+      // Если не JSON, значит это ID строка
+      attractionData = attractions.find(a => a.id === storedData);
+    }
+
+    if (!attractionData) {
+      window.location.href = 'attractions.html';
+      return;
+    }
+
+    // Установка фона героя
+    const hero = document.getElementById('attractionHero');
+    if (hero && attractionData.image) {
+      hero.style.backgroundImage = `url('${attractionData.image}')`;
+    }
+
+    // Заполнение содержимого
+    const heroTag = document.getElementById('heroTag');
+    const heroTitle = document.getElementById('heroTitle');
+    const heroDesc = document.getElementById('heroDesc');
+    const fullDesc = document.getElementById('fullDesc');
+    const fullHistory = document.getElementById('fullHistory');
+    const bestTimeCard = document.getElementById('bestTimeCard');
+    const difficultyCard = document.getElementById('difficultyCard');
+
+    if (heroTag) heroTag.textContent = attractionData.tag || attractionData.category || 'Достопримечательность';
+    if (heroTitle) heroTitle.textContent = attractionData.title;
+    if (heroDesc) heroDesc.textContent = attractionData.desc;
+    if (fullDesc) fullDesc.textContent = attractionData.fullDesc || attractionData.history || 'История этого места богата событиями.';
+    if (fullHistory) fullHistory.textContent = attractionData.fullHistory || attractionData.history || 'Узнайте больше об этом удивительном месте при посещении.';
+    
+    if (bestTimeCard) bestTimeCard.textContent = attractionData.bestTime || 'Май-сентябрь';
+    if (difficultyCard) difficultyCard.textContent = attractionData.difficulty || 'Средний';
+
+    // Основные факты
+    const highlightsGrid = document.getElementById('highlightsGrid');
+    if (highlightsGrid) {
+      const highlights = attractionData.highlights || [];
+      highlightsGrid.innerHTML = '';
+      
+      if (highlights.length > 0) {
+        highlights.forEach(highlight => {
+          const card = document.createElement('div');
+          card.className = 'highlight-card';
+          card.innerHTML = `<h4>✓</h4><p>${highlight}</p>`;
+          highlightsGrid.appendChild(card);
+        });
+      } else {
+        highlightsGrid.innerHTML = `<div class="highlight-card"><h4>✨</h4><p>Уникальное место с богатой историей</p></div>`;
     function loadAttraction() {
       const urlParams = new URLSearchParams(window.location.search);
       const paramId = urlParams.get('id');
@@ -602,58 +673,33 @@
         window.location.href = 'attractions.html';
         return;
       }
-
-      const attraction = attractions.find(a => a.id === attractionId);
-      if (!attraction) {
-        window.location.href = 'attractions.html';
-        return;
-      }
-
-      // Установка фона героя
-      document.getElementById('attractionHero').style.backgroundImage = `url('${attraction.image}')`;
-
-      // Заполнение содержимого
-      document.getElementById('heroTag').textContent = attraction.tag;
-      document.getElementById('heroTitle').textContent = attraction.title;
-      document.getElementById('heroDesc').textContent = attraction.desc;
-      document.getElementById('fullDesc').textContent = attraction.fullDesc;
-      document.getElementById('fullHistory').textContent = attraction.fullHistory;
-
-      // Основные факты
-      const highlightsGrid = document.getElementById('highlightsGrid');
-      attraction.highlights.forEach(highlight => {
-        const card = document.createElement('div');
-        card.className = 'highlight-card';
-        card.innerHTML = `
-          <h4>✓</h4>
-          <p>${highlight}</p>
-        `;
-        highlightsGrid.appendChild(card);
-      });
-
-      // Информационные карточки
-      document.getElementById('bestTimeCard').textContent = attraction.bestTime;
-      document.getElementById('difficultyCard').textContent = attraction.difficulty;
-
-      // Что смотреть
-      const whatToSeeGrid = document.getElementById('whatToSeeGrid');
-      attraction.whatToSee.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'highlight-card';
-        card.innerHTML = `
-          <h4>👁️</h4>
-          <p>${item}</p>
-        `;
-        whatToSeeGrid.appendChild(card);
-      });
-
-      // Обновление заголовка страницы
-      document.title = `${attraction.title} — Wayfarer KG`;
     }
 
-    // Загрузка при готовности DOM
-    document.addEventListener('DOMContentLoaded', loadAttraction);
-  </script>
-<script>document.addEventListener("DOMContentLoaded",()=>{const data=JSON.parse(sessionStorage.getItem("selectedAttraction")||'null');if(data){document.querySelector('.attraction-hero').style.backgroundImage=`url(${data.image})`;document.querySelector('.attraction-hero-content').innerHTML=`<div class="attraction-hero-tag">ДОСТОПРИМЕЧАТЕЛЬНОСТЬ</div><h1 class="attraction-hero-title">${data.title}</h1><div class="attraction-hero-divider"></div><p class="attraction-hero-desc">${data.desc}</p>`;document.querySelector('.attraction-content').innerHTML=`<h2 class='section-title'>Описание</h2><p class='section-text'>${data.history}</p><div class='info-cards'><div class='info-card'><div class='info-card-icon'>📍</div><div class='info-card-value'>Кыргызстан</div></div><div class='info-card'><div class='info-card-icon'>⭐</div><div class='info-card-value'>Популярное место</div></div></div><h2 class='section-title'>Советы туристам</h2><p class='section-text'>${data.tips}</p><div class='gallery-grid'><div class='gallery-item' style="background-image:url(${data.image})"></div><div class='gallery-item' style="background-image:url(${data.image})"></div></div>`;}})</script></body>
+    // Что смотреть
+    const whatToSeeGrid = document.getElementById('whatToSeeGrid');
+    if (whatToSeeGrid) {
+      const whatToSee = attractionData.whatToSee || [];
+      whatToSeeGrid.innerHTML = '';
+      
+      if (whatToSee.length > 0) {
+        whatToSee.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'highlight-card';
+          card.innerHTML = `<h4>👁️</h4><p>${item}</p>`;
+          whatToSeeGrid.appendChild(card);
+        });
+      } else if (attractionData.tips) {
+        whatToSeeGrid.innerHTML = `<div class="highlight-card"><h4>💡</h4><p>${attractionData.tips}</p></div>`;
+      }
+    }
+
+    // Обновление заголовка страницы
+    document.title = `${attractionData.title} — Wayfarer KG`;
+  }
+
+  // Загрузка при готовности DOM
+  document.addEventListener('DOMContentLoaded', loadAttractionDetail);
+</script>
 <script src="script.js"></script>
+  <script src="auth.js"></script>
 </html>
