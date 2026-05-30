@@ -242,17 +242,7 @@
       const regionId = sessionStorage.getItem('selectedRegion');
       const region = regions.find(r => r.id === regionId);
 
-      
-    //  div.onclick = () => {
-    //   sessionStorage.setItem('selectedAttraction', JSON.stringify({
-    //     title: attr.title,
-    //     desc: attr.desc,
-    //     image: attr.image,
-    //     history: 'Красивое туристическое место Кыргызстана.',
-    //     tips: 'Лучшее время для посещения — лето и осень.'
-    //   }));
-    //   window.location.href = 'attraction-detail.html';
-    // };  
+    
     
 
       // Установить герой
@@ -297,7 +287,6 @@
       
 
       const regionId = sessionStorage.getItem('selectedRegion');
-      const region = regions.find(r => r.id === regionId);
 
       const tripName = prompt('Введите название вашей поездки:');
       if (!tripName) return;
