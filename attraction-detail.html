@@ -1,4 +1,4 @@
-
+<!-- проверка -->
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -358,7 +358,6 @@
     <!-- ОБ ЭТОМ МЕСТЕ -->
     <section>
       <h2 class="section-title">📍 Об этом месте</h2>
-    
       <p class="section-text" id="fullDesc"></p>
     </section>
 
@@ -667,13 +666,6 @@ function loadAttractionDetail() {
         });
       } else {
         highlightsGrid.innerHTML = `<div class="highlight-card"><h4>✨</h4><p>Уникальное место с богатой историей</p></div>`;
-    function loadAttraction() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const paramId = urlParams.get('id');
-      const attractionId = sessionStorage.getItem('selectedAttraction') || paramId;
-      if (!attractionId) {
-        window.location.href = 'attractions.html';
-        return;
       }
     }
 
